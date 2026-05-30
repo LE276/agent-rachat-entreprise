@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Rachat Entreprise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080d18;
+      --surface: #0d1525;
+      --border: #1a3050;
+      --accent: #00b4d8;
+      --accent2: #00d4aa;
+      --warn: #f5a623;
+      --danger: #e05555;
+      --text: #dde8f0;
+      --muted: #6a8aaa;
+      --card: #0f1d30;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #08111f 0%, #112040 60%, #08111f 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 20px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% -20%, rgba(0,180,216,0.1) 0%, transparent 65%);
+    }
+    header .icon { font-size: 36px; margin-bottom: 8px; }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      background: linear-gradient(90deg, #00b4d8, #90e0ef, #00d4aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p { color: var(--muted); font-size: 13px; }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 7px 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .tab.active {
+      background: linear-gradient(135deg, #00b4d8, #0077b6);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    /* ── MAIN ── */
+    main { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── API KEY BANNER ── */
+    #api-banner {
+      background: rgba(245,166,35,0.08);
+      border: 1px solid var(--warn);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    #api-banner .icon { font-size: 20px; flex-shrink: 0; }
+    #api-banner p { font-size: 13px; color: #d4b96a; line-height: 1.6; }
+    #api-key-input {
+      width: 100%; margin-top: 8px;
+      padding: 9px 12px; border-radius: 8px;
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--text); font-size: 13px;
+    }
+
+    /* ── SECTIONS ── */
+    .section { margin-bottom: 24px; }
+    .section-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .section-sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+
+    /* ── SECTOR GRID ── */
+    .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .sector-btn {
+      padding: 11px 13px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: all .15s;
+    }
+    .sector-btn.selected {
+      border-color: var(--accent);
+      background: rgba(0,180,216,0.10);
+      color: #90e0ef;
+    }
+
+    /* ── REGION PILLS ── */
+    .regions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .region-btn {
+      padding: 7px 15px; border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted); font-size: 12px; font-weight: 500;
+      cursor: pointer; transition: all .15s;
+    }
+    .region-btn.selected {
+      border-color: var(--accent2);
+      background: rgba(0,212,170,0.12);
+      color: var(--accent2);
+    }
+
+    /* ── CA RANGE ── */
+    .ca-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .ca-grid label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 6px; }
+    .ca-grid select {
+      width: 100%; padding: 10px 12px; border-radius: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); font-size: 14px;
+    }
+
+    /* ── BUTTON ── */
+    .btn-main {
+      width: 100%; padding: 15px;
+      border-radius: 12px; border: none;
+      background: linear-gradient(135deg, #00b4d8, #0077b6);
+      color: #fff; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all .2s;
+      letter-spacing: .3px;
+    }
+    .btn-main:disabled {
+      background: #1a3050; cursor: not-allowed;
+    }
+
+    /* ── LOADER ── */
+    #loader { display: none; text-align: center; margin-top: 20px; }
+    .dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 10px; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    .dot:nth-child(2) { animation-delay: .2s; }
+    .dot:nth-child(3) { animation-delay: .4s; }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: .4; }
+      50% { transform: scale(1.4); opacity: 1; }
+    }
+    #loader-text { color: var(--muted); font-size: 13px; }
+
+    /* ── ERROR ── */
+    .error-box {
+      background: rgba(224,85,85,0.10);
+      border: 1px solid var(--danger);
+      border-radius: 10px; padding: 14px;
+      color: #ff9999; font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    /* ── RESULTS ── */
+    .alert-banner {
+      background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(0,180,216,0.06));
+      border: 1px solid var(--accent2);
+      border-radius: 12px; padding: 16px; margin-bottom: 20px;
+    }
+    .alert-label {
+      font-size: 11px; color: var(--accent2);
+      font-weight: 700; letter-spacing: 1px; margin-bottom: 6px;
+    }
+    .alert-text { color: #bde0f0; font-size: 14px; }
+
+    .opp-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px;
+      margin-bottom: 16px;
+    }
+    .opp-card.score-high { border-left: 3px solid var(--accent2); }
+    .opp-card.score-mid  { border-left: 3px solid var(--warn); }
+    .opp-card.score-low  { border-left: 3px solid var(--danger); }
+
+    .opp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+    .opp-title { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+    .opp-sector { font-size: 12px; color: var(--muted); }
+    .score-badge {
+      border-radius: 20px; padding: 4px 14px;
+      font-size: 14px; font-weight: 700;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .score-sub { font-size: 10px; color: var(--muted); text-align: right; margin-top: 3px; }
+
+    .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .stat-box { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px 12px; }
+    .stat-label { font-size: 11px; color: var(--muted); }
+    .stat-val { font-size: 14px; font-weight: 700; color: var(--accent2); margin-top: 2px; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .tag {
+      border-radius: 6px; padding: 4px 10px;
+      font-size: 12px; border: 1px solid;
+    }
+    .tag.green { background: rgba(0,212,170,0.08); border-color: rgba(0,212,170,0.25); color: #90e0ef; }
+    .tag.orange { background: rgba(245,166,35,0.08); border-color: rgba(245,166,35,0.25); color: #f5c842; }
+
+    .row-label { font-size: 11px; font-weight: 700; letter-spacing: .8px; margin-bottom: 6px; }
+    .row-label.green { color: #90e0ef; }
+    .row-label.orange { color: var(--warn); }
+
+    .opp-footer { border-top: 1px solid var(--border); padding-top: 10px; font-size: 12px; color: var(--muted); line-height: 1.8; }
+    .opp-footer span { color: var(--accent); }
+
+    /* ── ACTIONS ── */
+    .actions-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px; margin-top: 8px;
+    }
+    .actions-title { font-size: 14px; font-weight: 700; color: #90e0ef; margin-bottom: 14px; }
+    .action-item { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+    .action-num {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #00b4d8, #0077b6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+    }
+    .action-text { font-size: 13px; color: #bde0f0; padding-top: 2px; line-height: 1.5; }
+
+    /* ── FINANCING ── */
+    .finance-intro {
+      background: linear-gradient(135deg, rgba(0,180,216,0.08), rgba(0,119,182,0.05));
+      border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 20px;
+    }
+    .finance-intro .big { font-size: 24px; margin-bottom: 8px; }
+    .finance-intro h3 { color: #90e0ef; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .finance-intro p { color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+    .fin-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px; margin-bottom: 14px;
+    }
+    .fin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .fin-title { color: #90e0ef; font-size: 15px; font-weight: 700; }
+    .diff-badge { border-radius: 12px; padding: 3px 12px; font-size: 12px; font-weight: 600; border: 1px solid; }
+    .diff-easy { background: rgba(0,212,170,0.1); border-color: var(--accent2); color: var(--accent2); }
+    .diff-medium { background: rgba(245,166,35,0.1); border-color: var(--warn); color: var(--warn); }
+    .diff-hard { background: rgba(224,85,85,0.1); border-color: var(--danger); color: #ff9999; }
+
+    .fin-desc { color: #bde0f0; font-size: 13px; line-height: 1.6; margin-bottom: 12px; }
+    .example-box {
+      background: rgba(0,212,170,0.05); border: 1px solid rgba(0,212,170,0.2);
+      border-radius: 8px; padding: 12px; margin-bottom: 10px;
+    }
+    .example-label { font-size: 10px; color: var(--muted); margin-bottom: 4px; letter-spacing: 1px; }
+    .example-val { color: var(--accent2); font-size: 13px; }
+    .fin-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; color: var(--muted); }
+    .fin-meta span { color: var(--accent); }
+
+    /* ── EMPTY ── */
+    .empty { text-align: center; padding: 60px 20px; color: var(--muted); }
+    .empty .big { font-size: 48px; margin-bottom: 14px; }
+
+    @media (max-width: 480px) {
+      .sector-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .ca-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="icon">🏢</div>
+  <h1>Agent Rachat Entreprise</h1>
+  <p>Trouve les meilleures PME à reprendre · Financement sans apport</p>
+  <div class="tabs">
+    <button class="tab active" onclick="showPanel('search')">🔍 Recherche</button>
+    <button class="tab" onclick="showPanel('results')">📊 Résultats</button>
+    <button class="tab" onclick="showPanel('financing')">💰 Financement 0€</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════════ SEARCH PANEL ═══════════════ -->
+  <div id="panel-search" class="panel active">
+
+    <div id="api-banner">
+      <div class="icon">🔑</div>
+      <div style="flex:1">
+        <p><strong style="color:#f5c842">Clé API Anthropic requise</strong> — Entre ta clé ci-dessous. Elle reste dans ton navigateur et n'est jamais envoyée ailleurs.</p>
+        <input id="api-key-input" type="password" placeholder="sk-ant-api03-..." />
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">1. Secteurs ciblés</div>
+      <div class="section-sub">Sélectionne un ou plusieurs secteurs</div>
+      <div class="sector-grid" id="sector-grid"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">2. Région</div>
+      <div class="section-sub">Zone géographique cible</div>
+      <div class="regions" id="region-grid"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">3. Chiffre d'affaires cible</div>
+      <div class="section-sub" id="ca-label">Entre 200K€ et 2M€</div>
+      <div class="ca-grid">
+        <div>
+          <label>CA minimum</label>
+          <select id="ca-min" onchange="updateCaLabel()">
+            <option value="100000">100K€</option>
+            <option value="200000" selected>200K€</option>
+            <option value="500000">500K€</option>
+            <option value="750000">750K€</option>
+            <option value="1000000">1M€</option>
+            <option value="1500000">1,5M€</option>
+          </select>
+        </div>
+        <div>
+          <label>CA maximum</label>
+          <select id="ca-max" onchange="updateCaLabel()">
+            <option value="500000">500K€</option>
+            <option value="1000000">1M€</option>
+            <option value="2000000" selected>2M€</option>
+            <option value="3000000">3M€</option>
+            <option value="5000000">5M€</option>
+            <option value="10000000">10M€</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="error-box" class="error-box" style="display:none"></div>
+
+    <button class="btn-main" id="search-btn" onclick="runSearch()">
+      🚀 Lancer la recherche d'opportunités
+    </button>
+
+    <div id="loader">
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div id="loader-text">Analyse des marchés en cours...</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ RESULTS PANEL ═══════════════ -->
+  <div id="panel-results" class="panel">
+    <div id="results-container">
+      <div class="empty">
+        <div class="big">🔍</div>
+        <p>Lance une recherche pour voir les opportunités</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FINANCING PANEL ═══════════════ -->
+  <div id="panel-financing" class="panel">
+    <div class="finance-intro">
+      <div class="big">💡</div>
+      <h3>Racheter sans sortir ton capital — c'est possible</h3>
+      <p>En France, plusieurs montages permettent de reprendre une entreprise rentable avec 0€ ou très peu d'apport. La clé : c'est l'entreprise elle-même qui finance son rachat via ses bénéfices futurs.</p>
+    </div>
+    <div id="financing-container">
+      <!-- Filled by JS or after search -->
+    </div>
+  </div>
+
+</main>
+
+<script>
+const SECTORS = [
+  { id:'batiment', label:'🏗️ Bâtiment / BTP' },
+  { id:'import_export', label:'🌍 Import / Export' },
+  { id:'industrie', label:'🏭 Industrie / Fabrication' },
+  { id:'transport', label:'🚛 Transport / Logistique' },
+  { id:'commerce', label:'🛒 Commerce / Distribution' },
+  { id:'services', label:'⚙️ Services aux entreprises' },
+  { id:'restauration', label:'🍽️ Restauration / Hôtellerie' },
+  { id:'sante', label:'🏥 Santé / Para-médical' },
+  { id:'numerique', label:'💻 Numérique / Tech' },
+  { id:'tous', label:'🔍 Tous secteurs rentables' },
+];
+
+const REGIONS = [
+  'Normandie','Île-de-France','Bretagne','Pays de la Loire',
+  'Hauts-de-France','Occitanie','Auvergne-Rhône-Alpes',
+  'PACA','Nouvelle-Aquitaine','Grand Est','France entière'
+];
+
+const DEFAULT_FINANCING = [
+  { nom:'💳 Crédit-vendeur', principe:'Le cédant finance lui-même une partie du prix. Tu le rembourses sur les bénéfices de l\'entreprise.', capital_requis:'0€ à 10%', exemple_chiffre:'Entreprise à 500K€ → cédant finance 60% sur 5 ans = 60K€/an remboursé avec les bénéfices.', avantage_cle:'Aucun banquier impliqué', niveau_difficulte:'Facile' },
+  { nom:'🏦 LBO via Holding', principe:'Tu crées une holding qui emprunte le prix d\'achat. La dette est remboursée par les dividendes de la société rachetée.', capital_requis:'0€ à 30%', exemple_chiffre:'Achat 800K€ : holding emprunte 600K€, remboursée via 150K€/an de dividendes sur 4 ans.', avantage_cle:'Effet de levier maximal', niveau_difficulte:'Avancé' },
+  { nom:'🏛️ Prêt Bpifrance', principe:'Bpifrance garantit jusqu\'à 70% du prêt bancaire et propose des prêts sans garantie personnelle.', capital_requis:'10% à 20%', exemple_chiffre:'Reprise à 400K€ : banque 300K€ garantie à 70% par BPI, apport 40K€, prêt d\'honneur 60K€.', avantage_cle:'Pas de caution personnelle', niveau_difficulte:'Moyen' },
+  { nom:'🔑 Location-gérance', principe:'Tu gères l\'entreprise avant de l\'acheter. Les loyers versés sont déduits du prix final.', capital_requis:'0€', exemple_chiffre:'1 500€/mois de loyer pendant 2 ans = 36K€ déduits du prix. Tu testes sans risque.', avantage_cle:'Zéro risque à l\'entrée', niveau_difficulte:'Facile' },
+  { nom:'🤝 Initiative France / Réseau Entreprendre', principe:'Prêts d\'honneur à 0% de 10 000 à 50 000€ sans garantie ni caution personnelle.', capital_requis:'0€', exemple_chiffre:'Prêt d\'honneur 40K€ à 0% + prêt bancaire 200K€ + crédit-vendeur 100K€ = reprise à 340K€ sans apport.', avantage_cle:'Levier bancaire x5', niveau_difficulte:'Facile' },
+  { nom:'📈 Earn-out', principe:'Prix de rachat lié aux performances futures. Tu paies plus seulement si l\'entreprise performe.', capital_requis:'Variable', exemple_chiffre:'Prix fixe 200K€ + earn-out 100K€ si CA dépasse 500K€ sur 3 ans. Tu gères le risque.', avantage_cle:'Prix réduit à l\'entrée', niveau_difficulte:'Moyen' },
+];
+
+let selectedSectors = [];
+let selectedRegion = 'Normandie';
+let lastResults = null;
+
+// ── INIT ──
+function init() {
+  // Sector buttons
+  const sg = document.getElementById('sector-grid');
+  SECTORS.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'sector-btn';
+    btn.textContent = s.label;
+    btn.dataset.id = s.id;
+    btn.onclick = () => toggleSector(s.id, btn);
+    sg.appendChild(btn);
+  });
+
+  // Region buttons
+  const rg = document.getElementById('region-grid');
+  REGIONS.forEach(r => {
+    const btn = document.createElement('button');
+    btn.className = 'region-btn' + (r === 'Normandie' ? ' selected' : '');
+    btn.textContent = r;
+    btn.onclick = () => selectRegion(r, btn);
+    rg.appendChild(btn);
+  });
+
+  // Default financing
+  renderDefaultFinancing();
+}
+
+function toggleSector(id, btn) {
+  if (selectedSectors.includes(id)) {
+    selectedSectors = selectedSectors.filter(s => s !== id);
+    btn.classList.remove('selected');
+  } else {
+    selectedSectors.push(id);
+    btn.classList.add('selected');
+  }
+}
+
+function selectRegion(r, btn) {
+  selectedRegion = r;
+  document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function updateCaLabel() {
+  const min = fmtCA(document.getElementById('ca-min').value);
+  const max = fmtCA(document.getElementById('ca-max').value);
+  document.getElementById('ca-label').textContent = `Entre ${min} et ${max}`;
+}
+
+function fmtCA(v) {
+  const n = parseInt(v);
+  if (n >= 1000000) return `${(n/1000000).toFixed(1)}M€`;
+  if (n >= 1000) return `${(n/1000).toFixed(0)}K€`;
+  return `${n}€`;
+}
+
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(`panel-${id}`).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── SEARCH ──
+async function runSearch() {
+  const apiKey = document.getElementById('api-key-input').value.trim();
+  if (!apiKey) { showError('Entre ta clé API Anthropic (sk-ant-...).'); return; }
+  if (selectedSectors.length === 0) { showError('Sélectionne au moins un secteur.'); return; }
+
+  hideError();
+  setLoading(true);
+
+  const sectors = SECTORS.filter(s => selectedSectors.includes(s.id)).map(s => s.label).join(', ');
+  const caMin = fmtCA(document.getElementById('ca-min').value);
+  const caMax = fmtCA(document.getElementById('ca-max').value);
+
+  const steps = [
+    '🔍 Analyse des marchés en cours...',
+    '📊 Évaluation des multiples de valorisation...',
+    '💰 Calcul des stratégies de financement...',
+    '🗺️ Scan des opportunités régionales...',
+    '✅ Compilation des résultats...',
+  ];
+  let step = 0;
+  const interval = setInterval(() => {
+    if (step < steps.length - 1) { step++; document.getElementById('loader-text').textContent = steps[step]; }
+  }, 1200);
+
+  const prompt = `Tu es un expert en reprise et transmission d'entreprise en France, spécialisé dans la recherche d'opportunités de rachat sans apport ou avec apport minimal.
+
+MISSION : Analyse et présente les meilleures opportunités de rachat d'entreprise selon ces critères :
+SECTEURS : ${sectors}
+RÉGION : ${selectedRegion}
+CA CIBLE : entre ${caMin} et ${caMax}
+OBJECTIF : Entreprises saines, départ en retraite ou transmission, bon rendement, développables
+
+Réponds UNIQUEMENT en JSON valide, sans markdown, sans texte avant ou après, avec ce format exact :
+{
+  "opportunites": [
+    {
+      "secteur": "nom",
+      "emoji": "emoji",
+      "type_entreprise": "description précise",
+      "ca_moyen": "fourchette CA",
+      "marge_nette": "% marge nette",
+      "valorisation": "méthode et multiple",
+      "raisons_cession": ["raison1","raison2"],
+      "atouts": ["atout1","atout2","atout3"],
+      "risques": ["risque1","risque2"],
+      "sites_annonces": ["site1","site2"],
+      "score_opportunite": 85,
+      "budget_entree": "montant minimum réaliste"
+    }
+  ],
+  "strategies_financement": [
+    {
+      "nom": "nom stratégie",
+      "principe": "explication courte",
+      "capital_requis": "0€ / minimal",
+      "exemple_chiffre": "exemple concret avec chiffres",
+      "avantage_cle": "avantage principal",
+      "niveau_difficulte": "Facile / Moyen / Avancé"
+    }
+  ],
+  "alerte_opportunite": "type d'entreprise à surveiller en priorité dans cette région",
+  "demarches_immediates": ["action1","action2","action3","action4"]
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true',
+      },
+      body: JSON.stringify({
+        model: 'claude-opus-4-5',
+        max_tokens: 4000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    clearInterval(interval);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error?.message || `Erreur ${res.status}`);
+
+    const text = data.content?.map(b => b.text || '').join('') || '';
+    const clean = text.replace(/```json|```/g, '').trim();
+    lastResults = JSON.parse(clean);
+
+    renderResults(lastResults);
+    renderFinancing(lastResults.strategies_financement);
+
+    // Switch to results
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-results').classList.add('active');
+    document.querySelectorAll('.tab')[1].classList.add('active');
+
+  } catch (e) {
+    clearInterval(interval);
+    showError('Erreur : ' + e.message + '. Vérifie ta clé API.');
+  } finally {
+    setLoading(false);
+  }
+}
+
+// ── RENDER RESULTS ──
+function renderResults(data) {
+  const c = document.getElementById('results-container');
+  let html = '';
+
+  if (data.alerte_opportunite) {
+    html += `<div class="alert-banner">
+      <div class="alert-label">🎯 ALERTE PRIORITAIRE — ${selectedRegion.toUpperCase()}</div>
+      <div class="alert-text">${data.alerte_opportunite}</div>
+    </div>`;
+  }
+
+  html += `<p style="color:var(--muted);font-size:13px;margin-bottom:12px">${data.opportunites.length} opportunités identifiées</p>`;
+
+  data.opportunites.forEach(opp => {
+    const score = opp.score_opportunite || 70;
+    const scoreClass = score >= 80 ? 'score-high' : score >= 60 ? 'score-mid' : 'score-low';
+    const scoreColor = score >= 80 ? '#00d4aa' : score >= 60 ? '#f5a623' : '#e05555';
+
+    html += `<div class="opp-card ${scoreClass}">
+      <div class="opp-header">
+        <div>
+          <div class="opp-title">${opp.emoji} ${opp.type_entreprise}</div>
+          <div class="opp-sector">${opp.secteur}</div>
+        </div>
+        <div>
+          <div class="score-badge" style="background:${scoreColor}22;border:1px solid ${scoreColor};color:${scoreColor}">${score}/100</div>
+          <div class="score-sub">score opportunité</div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-label">CA moyen</div><div class="stat-val">${opp.ca_moyen}</div></div>
+        <div class="stat-box"><div class="stat-label">Marge nette</div><div class="stat-val">${opp.marge_nette}</div></div>
+        <div class="stat-box"><div class="stat-label">Budget entrée</div><div class="stat-val">${opp.budget_entree}</div></div>
+      </div>`;
+
+    if (opp.atouts?.length) {
+      html += `<div class="row-label green">✅ ATOUTS</div>
+        <div class="tag-row">${opp.atouts.map(a => `<span class="tag green">${a}</span>`).join('')}</div>`;
+    }
+    if (opp.risques?.length) {
+      html += `<div class="row-label orange">⚠️ VIGILANCE</div>
+        <div class="tag-row">${opp.risques.map(r => `<span class="tag orange">${r}</span>`).join('')}</div>`;
+    }
+
+    html += `<div class="opp-footer">
+      📋 Valorisation : <span>${opp.valorisation}</span><br>
+      🔗 Sites : <span>${opp.sites_annonces?.join(' · ')}</span>
+    </div></div>`;
+  });
+
+  if (data.demarches_immediates?.length) {
+    html += `<div class="actions-card">
+      <div class="actions-title">🎯 Actions immédiates à faire cette semaine</div>`;
+    data.demarches_immediates.forEach((d, i) => {
+      html += `<div class="action-item">
+        <div class="action-num">${i+1}</div>
+        <div class="action-text">${d}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  c.innerHTML = html;
+}
+
+// ── RENDER FINANCING ──
+function renderFinancing(strategies) {
+  const list = strategies || DEFAULT_FINANCING;
+  const c = document.getElementById('financing-container');
+  let html = '';
+  list.forEach(s => {
+    const diffClass = s.niveau_difficulte === 'Facile' ? 'diff-easy' : s.niveau_difficulte === 'Moyen' ? 'diff-medium' : 'diff-hard';
+    html += `<div class="fin-card">
+      <div class="fin-header">
+        <div class="fin-title">${s.nom}</div>
+        <div class="diff-badge ${diffClass}">${s.niveau_difficulte}</div>
+      </div>
+      <div class="fin-desc">${s.principe}</div>
+      <div class="example-box">
+        <div class="example-label">EXEMPLE CHIFFRÉ</div>
+        <div class="example-val">${s.exemple_chiffre}</div>
+      </div>
+      <div class="fin-meta">
+        <span>💰 Capital requis : <span>${s.capital_requis}</span></span>
+        <span>⚡ <span>${s.avantage_cle}</span></span>
+      </div>
+    </div>`;
+  });
+  c.innerHTML = html;
+}
+
+function renderDefaultFinancing() { renderFinancing(DEFAULT_FINANCING); }
+
+function setLoading(v) {
+  document.getElementById('loader').style.display = v ? 'block' : 'none';
+  document.getElementById('search-btn').disabled = v;
+  document.getElementById('search-btn').textContent = v ? 'Analyse en cours...' : '🚀 Lancer la recherche d\'opportunités';
+}
+
+function showError(msg) {
+  const e = document.getElementById('error-box');
+  e.textContent = msg;
+  e.style.display = 'block';
+}
+
+function hideError() {
+  document.getElementById('error-box').style.display = 'none';
+}
+
+init();
+</script>
+</body>
+</html>
