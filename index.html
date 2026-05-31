@@ -157,7 +157,7 @@ var steps=['🔍 Analyse des marchés...','📊 Évaluation des multiples...','�
 var i=0,iv=setInterval(function(){if(i<steps.length-1){i++;document.getElementById('ltxt').textContent=steps[i]}},1200);
 var pr='Expert reprise entreprise France. SECTEURS:'+sc+' RÉGION:'+reg+' CA:'+mn+'-'+mx+'. Réponds UNIQUEMENT en JSON valide sans markdown ni texte autour:\n{"opportunites":[{"secteur":"s","emoji":"e","type_entreprise":"t","ca_moyen":"c","marge_nette":"m","valorisation":"v","atouts":["a1","a2"],"risques":["r1"],"sites_annonces":["s1"],"score_opportunite":80,"budget_entree":"b"}],"strategies_financement":[{"nom":"n","principe":"p","capital_requis":"c","exemple_chiffre":"e","avantage_cle":"a","niveau_difficulte":"Facile"}],"alerte_opportunite":"a","demarches_immediates":["d1","d2","d3"]}';
 try{
-var r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+k},body:JSON.stringify({model:'llama3-70b-8192',messages:[{role:'user',content:pr}],temperature:0.7,max_tokens:3000})});
+var r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+k},body:JSON.stringify({model:'llama-3.3-70b-versatile',messages:[{role:'user',content:pr}],temperature:0.7,max_tokens:3000})});
 clearInterval(iv);
 var d=await r.json();
 if(!r.ok)throw new Error(d.error&&d.error.message?d.error.message:'Erreur '+r.status);
