@@ -25,4 +25,181 @@ input[type=password]{width:100%;padding:10px 12px;border-radius:8px;background:#
 .section h3{font-size:15px;font-weight:700;margin-bottom:4px}
 .section p{font-size:12px;color:#6a8aaa;margin-bottom:10px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.sbtn{padding:11px 13px;border-radius:10px;border:1px solid #1a3050;background:rgba(255,255,255,0.02);color:#6a8aaa;font-size:13px;cursor:pointer;text-align:left
+.sbtn{padding:11px 13px;border-radius:10px;border:1px solid #1a3050;background:rgba(255,255,255,0.02);color:#6a8aaa;font-size:13px;cursor:pointer;text-align:left}
+.sbtn.on{border-color:#00b4d8;background:rgba(0,180,216,0.12);color:#90e0ef}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{padding:7px 14px;border-radius:20px;border:1px solid #1a3050;background:transparent;color:#6a8aaa;font-size:12px;cursor:pointer}
+.pill.on{border-color:#00d4aa;background:rgba(0,212,170,0.12);color:#00d4aa}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{font-size:12px;color:#6a8aaa;display:block;margin-bottom:5px}
+select{width:100%;padding:10px;border-radius:8px;background:#0d1a2e;border:1px solid #1a3050;color:#dde8f0;font-size:13px}
+.btn{width:100%;padding:15px;border-radius:12px;border:none;background:#00b4d8;color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px}
+.btn:disabled{background:#1a3050;cursor:not-allowed}
+.err{background:rgba(224,85,85,0.1);border:1px solid #e05555;border-radius:10px;padding:12px;color:#ff9999;font-size:13px;margin-bottom:14px;display:none}
+.loader{text-align:center;padding:30px;display:none}
+.dots{display:flex;gap:6px;justify-content:center;margin-bottom:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:#00b4d8;animation:p 1.2s ease-in-out infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes p{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.4);opacity:1}}
+.card{background:#0f1d30;border:1px solid #1a3050;border-radius:14px;padding:18px;margin-bottom:14px}
+.card.h{border-left:3px solid #00d4aa}.card.m{border-left:3px solid #f5a623}.card.l{border-left:3px solid #e05555}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.card-title{font-size:16px;font-weight:700;margin-bottom:3px}
+.card-sub{font-size:12px;color:#6a8aaa}
+.badge{border-radius:20px;padding:4px 12px;font-size:13px;font-weight:700}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.stat{background:rgba(0,0,0,0.3);border-radius:8px;padding:9px 11px}
+.sl{font-size:11px;color:#6a8aaa}.sv{font-size:13px;font-weight:700;color:#00d4aa;margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.tag{border-radius:6px;padding:3px 9px;font-size:12px;border:1px solid}
+.tg{background:rgba(0,212,170,0.08);border-color:rgba(0,212,170,0.25);color:#90e0ef}
+.to{background:rgba(245,166,35,0.08);border-color:rgba(245,166,35,0.25);color:#f5c842}
+.rl{font-size:11px;font-weight:700;letter-spacing:.8px;margin-bottom:5px}
+.rlg{color:#90e0ef}.rlo{color:#f5a623}
+.foot{border-top:1px solid #1a3050;padding-top:10px;font-size:12px;color:#6a8aaa;line-height:1.8}
+.foot span{color:#00b4d8}
+.alert{background:rgba(0,212,170,0.08);border:1px solid #00d4aa;border-radius:12px;padding:14px;margin-bottom:16px}
+.al{font-size:11px;color:#00d4aa;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.at{color:#bde0f0;font-size:13px}
+.acts{background:#0f1d30;border:1px solid #1a3050;border-radius:14px;padding:18px;margin-top:8px}
+.acts h4{color:#90e0ef;font-size:14px;font-weight:700;margin-bottom:12px}
+.act{display:flex;gap:10px;margin-bottom:9px;align-items:flex-start}
+.anum{width:22px;height:22px;border-radius:50%;background:#00b4d8;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.atxt{font-size:13px;color:#bde0f0;padding-top:1px}
+.fi{background:#0f1d30;border:1px solid #1a3050;border-radius:14px;padding:16px;margin-bottom:12px}
+.fh{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.ft{color:#90e0ef;font-size:14px;font-weight:700}
+.db{border-radius:12px;padding:3px 11px;font-size:12px;font-weight:600;border:1px solid}
+.de{background:rgba(0,212,170,0.1);border-color:#00d4aa;color:#00d4aa}
+.dm{background:rgba(245,166,35,0.1);border-color:#f5a623;color:#f5a623}
+.da{background:rgba(224,85,85,0.1);border-color:#e05555;color:#ff9999}
+.fd{color:#bde0f0;font-size:13px;line-height:1.6;margin-bottom:10px}
+.ex{background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.2);border-radius:8px;padding:10px;margin-bottom:9px}
+.el{font-size:10px;color:#6a8aaa;margin-bottom:3px;letter-spacing:1px}
+.ev{color:#00d4aa;font-size:12px}
+.fm{font-size:12px;color:#6a8aaa}
+.fm em{color:#00b4d8;font-style:normal}
+.intro{background:rgba(0,180,216,0.06);border:1px solid #1a3050;border-radius:14px;padding:18px;margin-bottom:18px}
+.intro h3{color:#90e0ef;font-size:15px;font-weight:700;margin-bottom:7px}
+.intro p{color:#6a8aaa;font-size:13px;line-height:1.7}
+.empty{text-align:center;padding:50px 20px;color:#6a8aaa}
+</style>
+</head>
+<body>
+<header>
+<div style="font-size:34px;margin-bottom:6px">🏢</div>
+<h1>Agent Rachat Entreprise</h1>
+<p>Trouve les meilleures PME à reprendre · Financement sans apport</p>
+<div class="tabs">
+<button class="tab active" onclick="show('search',this)">🔍 Recherche</button>
+<button class="tab" onclick="show('results',this)">📊 Résultats</button>
+<button class="tab" onclick="show('financing',this)">💰 Financement 0€</button>
+</div>
+</header>
+<main>
+<div id="panel-search" class="panel active">
+<div class="api-box">
+<h3>🔑 Clé API Groq — 100% GRATUITE</h3>
+<p>1. Va sur <a href="https://console.groq.com" target="_blank">console.groq.com</a><br>2. Crée un compte gratuit → API Keys → Create API Key → colle-la ici</p>
+<input type="password" id="key" placeholder="gsk_..."/>
+</div>
+<div class="section">
+<h3>1. Secteurs ciblés</h3>
+<p>Sélectionne un ou plusieurs secteurs</p>
+<div class="grid2" id="sg"></div>
+</div>
+<div class="section">
+<h3>2. Région</h3>
+<p>Zone géographique cible</p>
+<div class="pills" id="rg"></div>
+</div>
+<div class="section">
+<h3>3. Chiffre d'affaires cible</h3>
+<p id="cal">Entre 200K€ et 2M€</p>
+<div class="row2">
+<div><label>CA minimum</label><select id="cmin" onchange="upca()"><option value="100000">100K€</option><option value="200000" selected>200K€</option><option value="500000">500K€</option><option value="750000">750K€</option><option value="1000000">1M€</option></select></div>
+<div><label>CA maximum</label><select id="cmax" onchange="upca()"><option value="500000">500K€</option><option value="1000000">1M€</option><option value="2000000" selected>2M€</option><option value="3000000">3M€</option><option value="5000000">5M€</option></select></div>
+</div>
+</div>
+<div class="err" id="err"></div>
+<button class="btn" id="btn" onclick="run()">🚀 Lancer la recherche d'opportunités</button>
+<div class="loader" id="ldr"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><div id="ltxt" style="color:#6a8aaa;font-size:13px">Analyse en cours...</div></div>
+</div>
+<div id="panel-results" class="panel"><div id="rc"><div class="empty">🔍<br><br>Lance une recherche pour voir les opportunités</div></div></div>
+<div id="panel-financing" class="panel">
+<div class="intro"><div style="font-size:22px;margin-bottom:7px">💡</div><h3>Racheter sans sortir ton capital</h3><p>Plusieurs montages permettent de reprendre une entreprise avec 0€ d'apport.</p></div>
+<div id="fc"></div>
+</div>
+</main>
+<script>
+var SS=[{id:'batiment',l:'🏗️ Bâtiment / BTP'},{id:'import',l:'🌍 Import / Export'},{id:'industrie',l:'🏭 Industrie'},{id:'transport',l:'🚛 Transport'},{id:'commerce',l:'🛒 Commerce'},{id:'services',l:'⚙️ Services B2B'},{id:'restauration',l:'🍽️ Restauration'},{id:'sante',l:'🏥 Santé'},{id:'numerique',l:'💻 Numérique'},{id:'tous',l:'🔍 Tous secteurs'}];
+var RR=['Normandie','Île-de-France','Bretagne','Pays de la Loire','Hauts-de-France','Occitanie','PACA','Grand Est','France entière'];
+var DF=[{n:'💳 Crédit-vendeur',p:'Le cédant finance lui-même une partie du prix.',c:'0€ à 10%',e:'500K€ → cédant finance 60% sur 5 ans = 60K€/an remboursé avec les bénéfices.',a:'Aucun banquier',d:'Facile'},{n:'🏦 LBO via Holding',p:'Holding qui emprunte, remboursée par les dividendes.',c:'0€ à 30%',e:'Achat 800K€ : holding emprunte 600K€, remboursée via 150K€/an dividendes.',a:'Effet de levier max',d:'Avancé'},{n:'🏛️ Prêt Bpifrance',p:'Garantit 70% du prêt bancaire sans caution personnelle.',c:'10% à 20%',e:'400K€ : banque 300K€ garantie BPI + prêt honneur 60K€.',a:'Pas de caution',d:'Moyen'},{n:'🔑 Location-gérance',p:'Tu gères avant d\'acheter. Les loyers sont déduits du prix.',c:'0€',e:'1500€/mois × 24 mois = 36K€ déduits du prix.',a:'Test sans risque',d:'Facile'},{n:'🤝 Initiative France',p:'Prêts d\'honneur à 0% jusqu\'à 50 000€ sans garantie.',c:'0€',e:'40K€ à 0% + prêt bancaire 200K€ + crédit-vendeur 100K€.',a:'Levier bancaire x5',d:'Facile'}];
+var sel=[],reg='Normandie';
+window.onload=function(){
+var sg=document.getElementById('sg');
+SS.forEach(function(s){var b=document.createElement('button');b.className='sbtn';b.textContent=s.l;b.dataset.id=s.id;b.onclick=function(){b.classList.toggle('on');sel=Array.from(document.querySelectorAll('.sbtn.on')).map(function(x){return x.dataset.id})};sg.appendChild(b)});
+var rg=document.getElementById('rg');
+RR.forEach(function(r){var b=document.createElement('button');b.className='pill'+(r==='Normandie'?' on':'');b.textContent=r;b.onclick=function(){reg=r;document.querySelectorAll('.pill').forEach(function(x){x.classList.remove('on')});b.classList.add('on')};rg.appendChild(b)});
+renderFin(DF);
+};
+function show(id,t){document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});document.getElementById('panel-'+id).classList.add('active');if(t)t.classList.add('active')}
+function fca(v){var n=parseInt(v);return n>=1000000?(n/1000000).toFixed(1)+'M€':(n/1000).toFixed(0)+'K€'}
+function upca(){document.getElementById('cal').textContent='Entre '+fca(document.getElementById('cmin').value)+' et '+fca(document.getElementById('cmax').value)}
+async function run(){
+var k=document.getElementById('key').value.trim();
+if(!k){serr('Entre ta clé Groq gratuite sur console.groq.com');return}
+if(!sel.length){serr('Sélectionne au moins un secteur');return}
+herr();setL(true);
+var sc=SS.filter(function(s){return sel.includes(s.id)}).map(function(s){return s.l}).join(', ');
+var mn=fca(document.getElementById('cmin').value),mx=fca(document.getElementById('cmax').value);
+var steps=['🔍 Analyse des marchés...','📊 Évaluation des multiples...','💰 Calcul financements...','🗺️ Scan régional...','✅ Compilation...'];
+var i=0,iv=setInterval(function(){if(i<steps.length-1){i++;document.getElementById('ltxt').textContent=steps[i]}},1200);
+var pr='Expert reprise entreprise France. SECTEURS:'+sc+' RÉGION:'+reg+' CA:'+mn+'-'+mx+'. Réponds UNIQUEMENT en JSON valide sans markdown ni texte autour:\n{"opportunites":[{"secteur":"s","emoji":"e","type_entreprise":"t","ca_moyen":"c","marge_nette":"m","valorisation":"v","atouts":["a1","a2"],"risques":["r1"],"sites_annonces":["s1"],"score_opportunite":80,"budget_entree":"b"}],"strategies_financement":[{"nom":"n","principe":"p","capital_requis":"c","exemple_chiffre":"e","avantage_cle":"a","niveau_difficulte":"Facile"}],"alerte_opportunite":"a","demarches_immediates":["d1","d2","d3"]}';
+try{
+var r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+k},body:JSON.stringify({model:'llama3-70b-8192',messages:[{role:'user',content:pr}],temperature:0.7,max_tokens:3000})});
+clearInterval(iv);
+var d=await r.json();
+if(!r.ok)throw new Error(d.error&&d.error.message?d.error.message:'Erreur '+r.status);
+var tx=d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content:'';
+tx=tx.replace(/```json|```/g,'').trim();
+var p=JSON.parse(tx);
+renderRes(p);
+if(p.strategies_financement)renderFin(p.strategies_financement);
+document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('active')});
+document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+document.getElementById('panel-results').classList.add('active');
+document.querySelectorAll('.tab')[1].classList.add('active');
+}catch(e){clearInterval(iv);serr('Erreur: '+e.message)}
+finally{setL(false)}
+}
+function renderRes(d){
+var c=document.getElementById('rc'),h='';
+if(d.alerte_opportunite)h+='<div class="alert"><div class="al">🎯 ALERTE — '+reg.toUpperCase()+'</div><div class="at">'+d.alerte_opportunite+'</div></div>';
+h+='<p style="color:#6a8aaa;font-size:13px;margin-bottom:12px">'+d.opportunites.length+' opportunités identifiées</p>';
+d.opportunites.forEach(function(o){
+var sc=o.score_opportunite||70,cl=sc>=80?'h':sc>=60?'m':'l',col=sc>=80?'#00d4aa':sc>=60?'#f5a623':'#e05555';
+h+='<div class="card '+cl+'"><div class="card-top"><div><div class="card-title">'+o.emoji+' '+o.type_entreprise+'</div><div class="card-sub">'+o.secteur+'</div></div><div><div class="badge" style="background:'+col+'22;border:1px solid '+col+';color:'+col+'">'+sc+'/100</div></div></div>';
+h+='<div class="stats"><div class="stat"><div class="sl">CA moyen</div><div class="sv">'+o.ca_moyen+'</div></div><div class="stat"><div class="sl">Marge nette</div><div class="sv">'+o.marge_nette+'</div></div><div class="stat"><div class="sl">Budget entrée</div><div class="sv">'+o.budget_entree+'</div></div></div>';
+if(o.atouts&&o.atouts.length)h+='<div class="rl rlg">✅ ATOUTS</div><div class="tags">'+o.atouts.map(function(a){return'<span class="tag tg">'+a+'</span>'}).join('')+'</div>';
+if(o.risques&&o.risques.length)h+='<div class="rl rlo">⚠️ VIGILANCE</div><div class="tags">'+o.risques.map(function(r){return'<span class="tag to">'+r+'</span>'}).join('')+'</div>';
+h+='<div class="foot">📋 '+o.valorisation+'<br>🔗 <span>'+(o.sites_annonces||[]).join(' · ')+'</span></div></div>';
+});
+if(d.demarches_immediates&&d.demarches_immediates.length){h+='<div class="acts"><h4>🎯 Actions cette semaine</h4>';d.demarches_immediates.forEach(function(a,i){h+='<div class="act"><div class="anum">'+(i+1)+'</div><div class="atxt">'+a+'</div></div>'});h+='</div>'}
+c.innerHTML=h;
+}
+function renderFin(list){
+var c=document.getElementById('fc'),h='';
+list.forEach(function(s){
+var dc=s.niveau_difficulte==='Facile'||s.d==='Facile'?'de':s.niveau_difficulte==='Moyen'||s.d==='Moyen'?'dm':'da';
+var nom=s.nom||s.n,pr=s.principe||s.p,cap=s.capital_requis||s.c,ex=s.exemple_chiffre||s.e,av=s.avantage_cle||s.a,niv=s.niveau_difficulte||s.d;
+h+='<div class="fi"><div class="fh"><div class="ft">'+nom+'</div><div class="db '+dc+'">'+niv+'</div></div><div class="fd">'+pr+'</div><div class="ex"><div class="el">EXEMPLE CHIFFRÉ</div><div class="ev">'+ex+'</div></div><div class="fm">💰 <em>'+cap+'</em> &nbsp; ⚡ <em>'+av+'</em></div></div>';
+});
+c.innerHTML=h;
+}
+function setL(v){document.getElementById('ldr').style.display=v?'block':'none';document.getElementById('btn').disabled=v;document.getElementById('btn').textContent=v?'Analyse...':'🚀 Lancer la recherche'}
+function serr(m){var e=document.getElementById('err');e.textContent=m;e.style.display='block'}
+function herr(){document.getElementById('err').style.display='none'}
+</script>
+</body>
+</html>
