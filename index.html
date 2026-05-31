@@ -3,232 +3,228 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>🏢 Agent Reprise Entreprise — France · Portugal · Maroc</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<title>Agent Universel — Entreprises · Voitures · Immobilier</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#06090f;--card:#0d1421;--border:#1a2a3a;--blue:#0ea5e9;--green:#10b981;--orange:#f59e0b;--red:#ef4444;--purple:#8b5cf6;--text:#e2e8f0;--muted:#64748b;--surface:#111827}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
-.hero{background:linear-gradient(135deg,#0c1a2e 0%,#0f2744 50%,#0c1a2e 100%);padding:32px 20px 24px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(14,165,233,0.12) 0%,transparent 70%)}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:4px 14px;font-size:11px;color:#10b981;font-weight:600;letter-spacing:1px;margin-bottom:14px}
-.hero h1{font-size:28px;font-weight:800;background:linear-gradient(90deg,#38bdf8,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
-.hero p{color:var(--muted);font-size:13px;max-width:500px;margin:0 auto 20px}
-.flags{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
-.flag{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:rgba(255,255,255,0.03);color:var(--muted);transition:all .2s}
-.flag.on{border-color:var(--blue);background:rgba(14,165,233,0.12);color:#38bdf8}
-.nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
-.nav-btn{padding:8px 18px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
-.nav-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
-main{max-width:960px;margin:0 auto;padding:24px 16px 80px}
+body{background:#070e1a;color:#e2e8f0;font-family:'Inter',sans-serif;min-height:100vh}
+.hero{background:linear-gradient(135deg,#0a1628,#0f2744,#0a1628);padding:24px 14px 18px;text-align:center;border-bottom:1px solid #1a2a3a}
+.badge{display:inline-block;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);border-radius:20px;padding:3px 14px;font-size:11px;color:#10b981;font-weight:700;letter-spacing:1px;margin-bottom:10px}
+.hero h1{font-size:22px;font-weight:800;background:linear-gradient(90deg,#38bdf8,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:5px}
+.hero p{color:#64748b;font-size:12px;margin-bottom:14px}
+.nav{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
+.nav-btn{padding:7px 14px;border-radius:20px;border:1px solid #1a2a3a;background:transparent;color:#64748b;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.nav-btn.active{background:#0ea5e9;border-color:#0ea5e9;color:#fff}
+main{max-width:960px;margin:0 auto;padding:18px 12px 80px}
 .panel{display:none}.panel.active{display:block}
-.api-box{background:linear-gradient(135deg,rgba(16,185,129,0.06),rgba(14,165,233,0.04));border:1px solid rgba(16,185,129,0.25);border-radius:14px;padding:16px;margin-bottom:22px}
-.api-title{color:#10b981;font-size:13px;font-weight:700;margin-bottom:8px}
-.api-steps{font-size:12px;color:#6ee7b7;line-height:1.8;margin-bottom:10px}
-.api-steps a{color:#38bdf8;text-decoration:none}
-.api-input{width:100%;padding:10px 14px;border-radius:8px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:13px}
-.sec{margin-bottom:24px}
-.sec-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
-.sec-sub{font-size:11px;color:var(--muted);margin-bottom:12px}
-.sector-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
-.sector-btn{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.02);color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;text-align:left;transition:all .15s}
-.sector-btn.on{border-color:var(--blue);background:rgba(14,165,233,0.1);color:#7dd3fc}
-.price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
-.price-btn{padding:9px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.02);color:var(--muted);font-size:12px;cursor:pointer;text-align:center;transition:all .15s}
-.price-btn.on{border-color:var(--orange);background:rgba(245,158,11,0.1);color:#fcd34d}
-.auto-box{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.25);border-radius:12px;padding:14px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.auto-info h4{color:#a78bfa;font-size:13px;font-weight:700;margin-bottom:3px}
-.auto-info p{color:var(--muted);font-size:12px}
-.toggle{position:relative;width:44px;height:24px;flex-shrink:0}
-.toggle input{opacity:0;width:0;height:0}
-.slider{position:absolute;inset:0;background:#1e2d3d;border-radius:24px;cursor:pointer;transition:.3s}
-.slider:before{content:'';position:absolute;width:18px;height:18px;left:3px;bottom:3px;background:#64748b;border-radius:50%;transition:.3s}
-input:checked+.slider{background:var(--purple)}
-input:checked+.slider:before{transform:translateX(20px);background:#fff}
-.launch-btn{width:100%;padding:16px;border-radius:12px;border:none;background:linear-gradient(135deg,#0ea5e9,#6366f1);color:#fff;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:.3px}
-.launch-btn:disabled{background:#1e2d3d;cursor:not-allowed;color:var(--muted)}
-.loader{display:none;text-align:center;padding:40px 20px}
-.loader-dots{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
-.loader-dot{width:10px;height:10px;border-radius:50%;background:var(--blue);animation:bounce 1.2s ease-in-out infinite}
-.loader-dot:nth-child(2){animation-delay:.2s;background:#818cf8}
-.loader-dot:nth-child(3){animation-delay:.4s;background:var(--green)}
-@keyframes bounce{0%,100%{transform:scale(.6);opacity:.4}50%{transform:scale(1.2);opacity:1}}
-.loader-text{color:var(--muted);font-size:13px}
-.loader-step{color:#38bdf8;font-size:11px;margin-top:6px;font-weight:500}
-.err-box{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:12px 14px;color:#fca5a5;font-size:13px;margin-bottom:16px;display:none;line-height:1.6}
-.auto-timer{background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:10px;padding:10px 14px;color:#c4b5fd;font-size:12px;margin-bottom:16px;display:none;text-align:center}
-.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
-.results-count{font-size:13px;color:var(--muted)}
-.results-count span{color:var(--text);font-weight:700}
-.refresh-btn{padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--blue);font-size:12px;font-weight:600;cursor:pointer}
-.alert-banner{background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(14,165,233,0.06));border:1px solid rgba(16,185,129,0.25);border-radius:12px;padding:14px 16px;margin-bottom:18px}
-.alert-tag{font-size:10px;color:#10b981;font-weight:700;letter-spacing:1.5px;margin-bottom:5px}
-.alert-text{color:#a7f3d0;font-size:13px;line-height:1.6}
-.opp-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:14px}
-.opp-card.score-a{border-left:4px solid #10b981}
-.opp-card.score-b{border-left:4px solid #f59e0b}
-.opp-card.score-c{border-left:4px solid #ef4444}
-.opp-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;gap:10px}
-.opp-emoji{font-size:28px;margin-bottom:6px}
-.opp-title{font-size:17px;font-weight:700;margin-bottom:3px;line-height:1.3}
-.opp-sub{font-size:12px;color:var(--muted)}
-.opp-country{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,0.05);border-radius:6px;padding:2px 8px;font-size:11px;color:var(--muted);margin-top:4px}
-.score-pill{text-align:right;flex-shrink:0}
-.score-num{font-size:22px;font-weight:800;line-height:1}
-.score-label{font-size:10px;color:var(--muted);margin-top:2px}
-.score-bar{width:60px;height:4px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden}
+.cat-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.cat-tab{padding:9px 16px;border-radius:10px;border:2px solid #1a2a3a;background:rgba(255,255,255,.02);color:#64748b;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;flex:1;text-align:center;min-width:100px}
+.cat-tab.on.biz{border-color:#0ea5e9;background:rgba(14,165,233,.1);color:#38bdf8}
+.cat-tab.on.car{border-color:#f59e0b;background:rgba(245,158,11,.1);color:#fcd34d}
+.cat-tab.on.immo{border-color:#10b981;background:rgba(16,185,129,.1);color:#6ee7b7}
+.api-box{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.25);border-radius:11px;padding:13px;margin-bottom:16px}
+.api-box h3{color:#10b981;font-size:12px;font-weight:700;margin-bottom:5px}
+.api-box p{font-size:11px;color:#6ee7b7;line-height:1.7;margin-bottom:7px}
+.api-box a{color:#38bdf8}
+.api-input{width:100%;padding:9px 12px;border-radius:8px;background:#070e1a;border:1px solid #1a2a3a;color:#e2e8f0;font-size:12px}
+.filter-grid{display:flex;flex-wrap:wrap;gap:5px}
+.fbtn{padding:5px 10px;border-radius:7px;border:1px solid #1a2a3a;background:rgba(255,255,255,.02);color:#64748b;font-size:11px;cursor:pointer;transition:all .15s}
+.fbtn.on{border-color:#0ea5e9;background:rgba(14,165,233,.1);color:#7dd3fc}
+.fbtn.on.y{border-color:#f59e0b;background:rgba(245,158,11,.1);color:#fcd34d}
+.fbtn.on.g{border-color:#10b981;background:rgba(16,185,129,.1);color:#6ee7b7}
+.countries-wrap{margin-bottom:14px}
+.countries-title{font-size:11px;font-weight:700;color:#e2e8f0;margin-bottom:8px}
+.countries-grid{display:flex;flex-wrap:wrap;gap:5px}
+.cflag{padding:5px 11px;border-radius:7px;border:1px solid #1a2a3a;background:rgba(255,255,255,.02);color:#64748b;font-size:11px;cursor:pointer;transition:all .15s}
+.cflag.on{border-color:#818cf8;background:rgba(129,140,248,.1);color:#a5b4fc}
+.launch{width:100%;padding:14px;border-radius:11px;border:none;background:linear-gradient(135deg,#0ea5e9,#6366f1);color:#fff;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px}
+.launch:disabled{background:#1e2d3d;color:#64748b;cursor:not-allowed}
+.loader{display:none;text-align:center;padding:28px}
+.dots{display:flex;gap:7px;justify-content:center;margin-bottom:10px}
+.dot{width:9px;height:9px;border-radius:50%;animation:b 1.2s ease-in-out infinite}
+.dot:nth-child(1){background:#0ea5e9}.dot:nth-child(2){background:#818cf8;animation-delay:.2s}.dot:nth-child(3){background:#10b981;animation-delay:.4s}
+@keyframes b{0%,100%{transform:scale(.5);opacity:.3}50%{transform:scale(1.3);opacity:1}}
+.loader-txt{color:#64748b;font-size:12px}
+.loader-step{color:#38bdf8;font-size:11px;margin-top:4px}
+.err{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:9px;padding:11px;color:#fca5a5;font-size:12px;margin-bottom:12px;display:none;line-height:1.6}
+.r-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:7px}
+.r-count{font-size:12px;color:#64748b}
+.r-count b{color:#e2e8f0}
+.r-refresh{padding:5px 12px;border-radius:14px;border:1px solid #1a2a3a;background:transparent;color:#0ea5e9;font-size:11px;cursor:pointer}
+.alert{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(14,165,233,.06));border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:12px;margin-bottom:14px}
+.alert-tag{font-size:10px;color:#10b981;font-weight:700;letter-spacing:1.5px;margin-bottom:3px}
+.alert-txt{color:#a7f3d0;font-size:12px;line-height:1.6}
+.card{background:#0d1421;border:1px solid #1a2a3a;border-radius:13px;padding:16px;margin-bottom:11px}
+.card.A{border-left:4px solid #10b981}.card.B{border-left:4px solid #f59e0b}.card.C{border-left:4px solid #ef4444}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:11px;gap:9px}
+.card-emoji{font-size:24px;margin-bottom:4px}
+.card-title{font-size:15px;font-weight:700;line-height:1.3;margin-bottom:2px}
+.card-sub{font-size:11px;color:#64748b}
+.card-loc{display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.04);border-radius:5px;padding:2px 7px;font-size:10px;color:#64748b;margin-top:3px}
+.score-box{text-align:right;flex-shrink:0}
+.score-n{font-size:20px;font-weight:800}
+.score-l{font-size:10px;color:#64748b}
+.score-bar{width:52px;height:3px;background:#1a2a3a;border-radius:2px;margin-top:4px;overflow:hidden}
 .score-fill{height:100%;border-radius:2px}
-.price-highlight{background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(245,158,11,0.04));border:1px solid rgba(245,158,11,0.2);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.price-label{font-size:10px;color:var(--muted);font-weight:600;letter-spacing:.8px;margin-bottom:3px}
-.price-val{font-size:18px;font-weight:800;color:#fcd34d}
-.price-val.green{color:#34d399}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.stat-box{background:rgba(0,0,0,0.25);border-radius:8px;padding:10px}
-.stat-label{font-size:10px;color:var(--muted);margin-bottom:3px}
-.stat-val{font-size:13px;font-weight:700;color:#34d399}
-.tags-section{margin-bottom:12px}
-.tags-title{font-size:10px;font-weight:700;letter-spacing:1px;margin-bottom:6px}
-.tags{display:flex;flex-wrap:wrap;gap:5px}
-.tag{font-size:11px;border-radius:6px;padding:4px 10px;border:1px solid}
-.tag-green{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.25);color:#6ee7b7}
-.tag-orange{background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.25);color:#fcd34d}
-.conseil-box{background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.2);border-radius:10px;padding:12px;margin-bottom:14px;font-size:12px;color:#7dd3fc;line-height:1.7}
-.conseil-box strong{color:#38bdf8;font-size:11px;display:block;margin-bottom:4px;letter-spacing:.8px}
-.links-section{border-top:1px solid var(--border);padding-top:12px;margin-top:4px}
-.links-title{font-size:10px;color:var(--muted);font-weight:600;letter-spacing:.8px;margin-bottom:8px}
-.links-grid{display:flex;flex-wrap:wrap;gap:6px}
-.link-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.2);color:#38bdf8;font-size:11px;font-weight:600;text-decoration:none}
-.actions-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-top:10px}
-.actions-title{font-size:13px;font-weight:700;color:#a78bfa;margin-bottom:14px}
-.action-item{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
-.action-num{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#0ea5e9,#6366f1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.action-text{font-size:12px;color:#94a3b8;padding-top:2px;line-height:1.6}
-.action-link{color:#38bdf8;text-decoration:none}
-.fin-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px}
-.fin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.fin-title{font-size:14px;font-weight:700;color:#7dd3fc}
-.diff-pill{border-radius:12px;padding:3px 11px;font-size:11px;font-weight:600;border:1px solid}
-.diff-easy{background:rgba(16,185,129,0.1);border-color:#10b981;color:#10b981}
-.diff-med{background:rgba(245,158,11,0.1);border-color:#f59e0b;color:#f59e0b}
-.diff-hard{background:rgba(239,68,68,0.1);border-color:#ef4444;color:#fca5a5}
-.fin-desc{color:#94a3b8;font-size:12px;line-height:1.7;margin-bottom:10px}
-.fin-example{background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.15);border-radius:8px;padding:10px;margin-bottom:10px}
-.fin-ex-label{font-size:9px;color:var(--muted);letter-spacing:1px;margin-bottom:4px}
-.fin-ex-val{color:#34d399;font-size:12px;line-height:1.6}
-.fin-meta{font-size:11px;color:var(--muted)}
+.pbox{background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(245,158,11,.04));border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:10px 12px;margin-bottom:11px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.pl{font-size:10px;color:#64748b;font-weight:600;letter-spacing:.7px;margin-bottom:2px}
+.pv{font-size:16px;font-weight:800;color:#fcd34d}
+.pv.g{color:#34d399}
+.budget-line{font-size:11px;color:#6ee7b7;margin-bottom:10px}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:11px}
+.stat{background:rgba(0,0,0,.25);border-radius:7px;padding:8px}
+.sl{font-size:10px;color:#64748b;margin-bottom:2px}
+.sv{font-size:12px;font-weight:700;color:#34d399}
+.info-box{border-radius:8px;padding:10px;margin-bottom:10px;font-size:11px;line-height:1.7}
+.info-blue{background:rgba(14,165,233,.06);border:1px solid rgba(14,165,233,.18);color:#7dd3fc}
+.info-purple{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.18);color:#c4b5fd}
+.info-b{font-size:10px;display:block;margin-bottom:2px;letter-spacing:.7px;font-weight:700}
+.info-blue .info-b{color:#38bdf8}.info-purple .info-b{color:#a78bfa}
+.tags-wrap{margin-bottom:9px}
+.tags-title{font-size:10px;font-weight:700;letter-spacing:.8px;margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11px;border-radius:5px;padding:3px 8px;border:1px solid}
+.tg{background:rgba(16,185,129,.07);border-color:rgba(16,185,129,.22);color:#6ee7b7}
+.to{background:rgba(245,158,11,.07);border-color:rgba(245,158,11,.22);color:#fcd34d}
+.tb{background:rgba(96,165,250,.07);border-color:rgba(96,165,250,.2);color:#93c5fd}
+.links-wrap{border-top:1px solid #1a2a3a;padding-top:11px;margin-top:4px}
+.links-title{font-size:10px;color:#64748b;font-weight:600;letter-spacing:.7px;margin-bottom:7px}
+.link-grid{display:flex;flex-wrap:wrap;gap:5px}
+.link-btn{display:inline-flex;align-items:center;gap:3px;padding:5px 11px;border-radius:6px;background:rgba(14,165,233,.08);border:1px solid rgba(14,165,233,.2);color:#38bdf8;font-size:11px;font-weight:600;text-decoration:none}
+.link-desc{font-size:10px;color:#475569;padding-left:3px}
+.actions{background:#0d1421;border:1px solid #1a2a3a;border-radius:11px;padding:14px;margin-top:8px}
+.actions h4{font-size:12px;font-weight:700;color:#a78bfa;margin-bottom:11px}
+.action{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
+.anum{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#0ea5e9,#6366f1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.atxt{font-size:11px;color:#94a3b8;line-height:1.6}
+.atxt a{color:#38bdf8;text-decoration:none}
+.country-section{margin-bottom:22px}
+.country-title{font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #1a2a3a}
+.plat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:7px}
+.plat-card{background:#0d1421;border:1px solid #1a2a3a;border-radius:9px;padding:11px}
+.plat-name{font-size:12px;font-weight:700;color:#e2e8f0;margin-bottom:2px}
+.plat-desc{font-size:10px;color:#64748b;margin-bottom:7px;line-height:1.4}
+.plat-a{display:inline-flex;align-items:center;gap:3px;color:#38bdf8;font-size:11px;font-weight:600;text-decoration:none;padding:4px 10px;background:rgba(14,165,233,.08);border:1px solid rgba(14,165,233,.18);border-radius:6px}
+.fin-card{background:#0d1421;border:1px solid #1a2a3a;border-radius:10px;padding:14px;margin-bottom:10px}
+.fin-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.fin-title{font-size:13px;font-weight:700;color:#7dd3fc}
+.diff{border-radius:10px;padding:2px 9px;font-size:11px;font-weight:600;border:1px solid}
+.df{background:rgba(16,185,129,.1);border-color:#10b981;color:#10b981}
+.dm{background:rgba(245,158,11,.1);border-color:#f59e0b;color:#f59e0b}
+.da{background:rgba(239,68,68,.1);border-color:#ef4444;color:#fca5a5}
+.fin-desc{color:#94a3b8;font-size:12px;line-height:1.7;margin-bottom:8px}
+.fin-ex{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.14);border-radius:7px;padding:9px;margin-bottom:8px}
+.fin-ex-l{font-size:9px;color:#64748b;letter-spacing:1px;margin-bottom:3px}
+.fin-ex-v{color:#34d399;font-size:11px;line-height:1.5}
+.fin-meta{font-size:11px;color:#64748b}
 .fin-meta em{color:#38bdf8;font-style:normal;font-weight:600}
-.sites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-bottom:20px}
-.site-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
-.site-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
-.site-desc{font-size:11px;color:var(--muted);margin-bottom:10px;line-height:1.5}
-.site-link{display:inline-flex;align-items:center;gap:4px;color:#38bdf8;font-size:11px;font-weight:600;text-decoration:none}
-.empty{text-align:center;padding:60px 20px;color:var(--muted)}
-@media(max-width:600px){.stats-row{grid-template-columns:1fr 1fr}.price-grid{grid-template-columns:1fr 1fr}.sector-grid{grid-template-columns:1fr 1fr}.price-highlight{grid-template-columns:1fr 1fr}}
+.empty{text-align:center;padding:50px 20px;color:#64748b}
+@media(max-width:540px){.stats{grid-template-columns:1fr 1fr}.pbox{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 <div class="hero">
-<div class="hero-badge">🔴 SCAN EN DIRECT · IA POWERED</div>
-<h1>Agent Reprise Entreprise</h1>
-<p>Trouve les meilleures entreprises à racheter en France, Portugal et Maroc — de 1€ à plusieurs centaines de milliers d'euros</p>
-<div class="flags" id="flags">
-<button class="flag on" data-c="france">🇫🇷 France</button>
-<button class="flag on" data-c="portugal">🇵🇹 Portugal · Braga · Porto</button>
-<button class="flag on" data-c="maroc">🇲🇦 Maroc</button>
-</div>
+<div class="badge">🌍 FRANCE · PORTUGAL · MAROC · ESPAGNE · BELGIQUE · CANADA · SENEGAL · DUBAI · +</div>
+<h1>Agent Universel — Entreprises · Voitures · Immobilier</h1>
+<p>De 1 euro a plusieurs millions · Liens directs vers les vraies annonces · 18 pays</p>
 <div class="nav">
-<button class="nav-btn active" onclick="showPanel('search',this)">🔍 Recherche</button>
-<button class="nav-btn" onclick="showPanel('results',this)">📊 Opportunités</button>
-<button class="nav-btn" onclick="showPanel('financing',this)">💰 Financement</button>
-<button class="nav-btn" onclick="showPanel('sites',this)">🔗 Sites & Liens</button>
+<button class="nav-btn active" onclick="goPanel('search',this)">Recherche IA</button>
+<button class="nav-btn" onclick="goPanel('results',this)">Resultats</button>
+<button class="nav-btn" onclick="goPanel('links',this)">Annonces directes</button>
+<button class="nav-btn" onclick="goPanel('financing',this)">Financement</button>
 </div>
 </div>
 <main>
 <div id="panel-search" class="panel active">
 <div class="api-box">
-<div class="api-title">🔑 Clé API Groq — 100% Gratuite · Sans carte bancaire</div>
-<div class="api-steps">1. Va sur <a href="https://console.groq.com" target="_blank">console.groq.com</a> → Crée un compte gratuit<br>2. Clique <strong>API Keys</strong> → <strong>Create API Key</strong><br>3. Copie la clé et colle-la ici ↓</div>
-<input type="password" id="key" class="api-input" placeholder="gsk_xxxxxxxxxxxxxxxxxxxx"/>
+<h3>Cle API Groq — 100% Gratuite</h3>
+<p>1. Va sur <a href="https://console.groq.com" target="_blank">console.groq.com</a> → Creer un compte gratuit<br>2. Menu gauche → API Keys → Create API Key<br>3. Copie la cle (gsk_...) et colle ici</p>
+<input type="password" id="key" class="api-input" placeholder="gsk_..."/>
 </div>
-<div class="sec">
-<div class="sec-title">1️⃣ Secteur d'activité</div>
-<div class="sec-sub">Sélectionne un ou plusieurs secteurs — plus tu en choisis, plus tu as d'opportunités</div>
-<div class="sector-grid" id="sg"></div>
+<div style="margin-bottom:14px">
+<div style="font-size:11px;font-weight:700;color:#e2e8f0;margin-bottom:8px">1 — Que cherches-tu ?</div>
+<div class="cat-tabs">
+<button class="cat-tab on biz" data-cat="business" onclick="selectCat('business',this)">Entreprise a racheter</button>
+<button class="cat-tab car" data-cat="car" onclick="selectCat('car',this)">Voiture occasion</button>
+<button class="cat-tab immo" data-cat="immo" onclick="selectCat('immo',this)">Immobilier</button>
 </div>
-<div class="sec">
-<div class="sec-title">2️⃣ Budget de reprise</div>
-<div class="sec-sub">De 1€ (reprise symbolique / liquidation) à plusieurs millions — choisis ta fourchette</div>
-<div class="price-grid" id="pg"></div>
 </div>
-<div class="auto-box">
-<div class="auto-info"><h4>🔄 Scan automatique continu</h4><p>L'agent relance une analyse toutes les 5 minutes automatiquement</p></div>
-<label class="toggle"><input type="checkbox" id="auto-toggle"/><span class="slider"></span></label>
+<div class="countries-wrap">
+<div class="countries-title">2 — Pays</div>
+<div class="countries-grid" id="cg"></div>
 </div>
-<div class="auto-timer" id="auto-timer">⏱️ Prochain scan dans <span id="countdown">5:00</span></div>
-<div class="err-box" id="err"></div>
-<button class="launch-btn" id="btn" onclick="run()">🚀 Lancer la recherche d'opportunités</button>
+<div id="dynamic-filters"></div>
+<div style="margin-bottom:14px">
+<div style="font-size:11px;font-weight:700;color:#e2e8f0;margin-bottom:8px" id="budget-title">3 — Budget</div>
+<div class="filter-grid" id="pg"></div>
+</div>
+<div class="err" id="err"></div>
+<button class="launch" id="btn" onclick="run()">Lancer l'analyse IA</button>
 <div class="loader" id="ldr">
-<div class="loader-dots"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div>
-<div class="loader-text" id="ltxt">Analyse en cours...</div>
-<div class="loader-step" id="lstep">Connexion aux bases de données...</div>
+<div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+<div class="loader-txt" id="ltxt">Analyse en cours...</div>
+<div class="loader-step" id="lstep">Recherche des meilleures opportunites...</div>
 </div>
 </div>
-<div id="panel-results" class="panel"><div id="results-wrap"><div class="empty"><div style="font-size:52px;margin-bottom:16px">📊</div><p>Lance une recherche pour voir les opportunités</p></div></div></div>
+<div id="panel-results" class="panel"><div id="rw"><div class="empty"><div style="font-size:44px;margin-bottom:12px">📊</div><p>Lance une recherche pour voir les opportunites</p></div></div></div>
+<div id="panel-links" class="panel">
+<h3 style="font-size:14px;font-weight:700;margin-bottom:5px">Acces direct aux annonces</h3>
+<p style="font-size:11px;color:#64748b;margin-bottom:12px">Clique directement pour voir les vraies annonces en temps reel</p>
+<div class="cat-tabs" style="margin-bottom:16px">
+<button class="cat-tab on biz" onclick="setLinksFilter('business',this)">Entreprises</button>
+<button class="cat-tab car" onclick="setLinksFilter('car',this)">Voitures</button>
+<button class="cat-tab immo" onclick="setLinksFilter('immo',this)">Immobilier</button>
+</div>
+<div id="links-content"></div>
+</div>
 <div id="panel-financing" class="panel">
-<div style="background:linear-gradient(135deg,rgba(14,165,233,0.06),rgba(99,102,241,0.04));border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:20px">
-<div style="font-size:28px;margin-bottom:10px">💡</div>
-<h3 style="color:#7dd3fc;font-size:16px;font-weight:700;margin-bottom:8px">Racheter une entreprise sans apport — c'est possible</h3>
-<p style="color:var(--muted);font-size:13px;line-height:1.7">En France, Portugal et Maroc, plusieurs montages permettent de reprendre une entreprise rentable avec 0€ ou très peu d'apport. L'entreprise finance elle-même son rachat via ses bénéfices futurs.</p>
+<div style="background:rgba(14,165,233,.06);border:1px solid #1a2a3a;border-radius:11px;padding:14px;margin-bottom:16px">
+<div style="font-size:24px;margin-bottom:7px">💡</div>
+<h3 style="color:#7dd3fc;font-size:14px;font-weight:700;margin-bottom:6px">Acheter sans apport — les vraies methodes</h3>
+<p style="color:#64748b;font-size:12px;line-height:1.7">Entreprise, voiture ou immobilier — plusieurs montages permettent d'acquerir avec peu ou sans apport.</p>
 </div>
 <div id="fc"></div>
 </div>
-<div id="panel-sites" class="panel">
-<h3 style="font-size:16px;font-weight:700;margin-bottom:6px">🔗 Plateformes officielles de cession d'entreprise</h3>
-<p style="font-size:12px;color:var(--muted);margin-bottom:20px">Liens directs vers les meilleures plateformes par pays</p>
-<div class="sites-grid" id="sites-grid"></div>
-</div>
 </main>
 <script>
-var SECTORS=[{id:'batiment',l:'🏗️ Bâtiment / BTP'},{id:'import',l:'🌍 Import / Export'},{id:'industrie',l:'🏭 Industrie'},{id:'transport',l:'🚛 Transport'},{id:'commerce',l:'🛒 Commerce / Négoce'},{id:'services',l:'⚙️ Services B2B'},{id:'restauration',l:'🍽️ Restauration'},{id:'agriculture',l:'🌾 Agriculture'},{id:'immobilier',l:'🏠 Immobilier'},{id:'numerique',l:'💻 Numérique'},{id:'sante',l:'🏥 Santé'},{id:'tous',l:'🔍 Tous secteurs'}];
-var PRICES=[{id:'p1',l:'💎 1€ à 10K€',min:'1€',max:'10 000€'},{id:'p2',l:'🌱 10K€ à 50K€',min:'10 000€',max:'50 000€'},{id:'p3',l:'📈 50K€ à 150K€',min:'50 000€',max:'150 000€'},{id:'p4',l:'💼 150K€ à 500K€',min:'150 000€',max:'500 000€'},{id:'p5',l:'🏆 500K€ à 2M€',min:'500 000€',max:'2 000 000€'},{id:'p6',l:'👑 Plus de 2M€',min:'2 000 000€',max:'10 000 000€'}];
-var SITES=[{flag:'🇫🇷',name:'Transmibat',desc:'Plateforme FFB — spécialiste cession BTP',url:'https://www.transmibat.fr',cat:'France · BTP'},{flag:'🇫🇷',name:'CessionBTP',desc:'Leader annonces BTP — +500 annonces',url:'https://www.cessionbtp.fr',cat:'France · BTP'},{flag:'🇫🇷',name:'Transentreprise',desc:'CCI France — 6000+ offres toutes activités',url:'https://www.transentreprise.com',cat:'France · Tous'},{flag:'🇫🇷',name:'CessionPME',desc:'118 000+ annonces PME/TPE',url:'https://www.cessionpme.com',cat:'France · PME'},{flag:'🇫🇷',name:'Bpifrance Reprise',desc:'Moteur officiel Bpifrance',url:'https://reprise-entreprise.bpifrance.fr',cat:'France · Officiel'},{flag:'🇫🇷',name:'BODACC',desc:'Annonces légales — cessions & liquidations',url:'https://www.bodacc.fr',cat:'France · Légal'},{flag:'🇫🇷',name:'Fusacq',desc:'Place de marché avec données financières',url:'https://www.fusacq.com',cat:'France · PME'},{flag:'🇫🇷',name:'Alvo',desc:'Plateforme tout-en-un valorisation + financement',url:'https://www.alvo.market',cat:'France · Complet'},{flag:'🇵🇹',name:'Negócios à Venda',desc:'Principale plateforme vente entreprises Portugal',url:'https://www.negociosavenda.pt',cat:'Portugal · Tous'},{flag:'🇵🇹',name:'Imovirtual',desc:'Fonds de commerce Porto & Braga',url:'https://www.imovirtual.com',cat:'Portugal · Braga·Porto'},{flag:'🇵🇹',name:'OLX Portugal',desc:'Petites annonces entreprises bon marché',url:'https://www.olx.pt/negocios-e-servicos',cat:'Portugal · Petits prix'},{flag:'🇵🇹',name:'Idealista Portugal',desc:'Commerce et locaux à reprendre',url:'https://www.idealista.pt',cat:'Portugal · Commerce'},{flag:'🇲🇦',name:'Avito Maroc',desc:'Annonces commerces et entreprises',url:'https://www.avito.ma/fr/maroc/commerces_et_fonds_de_commerce',cat:'Maroc · Tous'},{flag:'🇲🇦',name:'Mubawab',desc:'Fonds de commerce et locaux commerciaux',url:'https://www.mubawab.ma',cat:'Maroc · Commerce'},{flag:'🇲🇦',name:'Sarouty',desc:'Immobilier commercial et fonds de commerce',url:'https://www.sarouty.ma',cat:'Maroc · Immobilier'},{flag:'🌍',name:'MeetPRO BTP',desc:'Spécialiste reprise BTP international',url:'https://www.meetpro.fr',cat:'International · BTP'}];
-var FIN=[{nom:'💳 Crédit-vendeur',principe:'Le cédant accepte d\'être payé en plusieurs fois directement par toi. Tu rembourses sur les bénéfices de l\'entreprise. C\'est la méthode la plus accessible pour une première reprise sans banque.',capital:'0€ à 10% d\'apport',exemple:'Entreprise à 400K€ → cédant finance 60% sur 5 ans = 48K€/an remboursé avec les bénéfices. Apport réel : 40K€.',avantage:'Pas de banque, pas de garantie personnelle',diff:'Facile'},{nom:'🏦 LBO — Holding de reprise',principe:'Tu crées une holding qui emprunte le prix d\'achat. La holding rachète l\'entreprise et rembourse la dette bancaire grâce aux dividendes de la société rachetée. Effet de levier maximum.',capital:'5% à 30% selon les banques',exemple:'Cible valorisée 600K€ → Holding avec 30K€ capital → emprunte 500K€ sur 7 ans → remboursement 71K€/an via dividendes. Tu contrôles 600K€ avec 30K€.',avantage:'Effet de levier maximal',diff:'Avancé'},{nom:'🏛️ Garantie Bpifrance',principe:'Bpifrance garantit 70% de ton prêt bancaire. La banque prend moins de risque et te prête plus facilement sans exiger de garantie sur tes biens personnels.',capital:'10% à 20% minimum',exemple:'Reprise à 300K€ → Prêt 240K€ garanti BPI → Prêt honneur 40K€ à 0% → Apport : 20K€ seulement.',avantage:'Pas de caution personnelle',diff:'Moyen'},{nom:'🔑 Location-gérance',principe:'Tu gères l\'entreprise avant de l\'acheter. Tu verses un loyer mensuel déduit du prix final. Tu testes sans risque et apprends le métier avant de t\'engager.',capital:'0€ — zéro apport',exemple:'Entreprise à 200K€ → Location 18 mois à 2000€/mois = 36K€ déduits → Tu achètes pour 164K€ après test réel.',avantage:'Test sans risque + déduction du prix',diff:'Facile'},{nom:'🤝 Prêt d\'honneur Initiative France',principe:'240 plateformes en France accordent des prêts à 0% d\'intérêt sans garantie personnelle. Levier pour obtenir un crédit bancaire 5x supérieur.',capital:'0€',exemple:'40K€ à 0% sur 5 ans → La banque suit pour 200K€ → Total : 240K€ disponibles sans garantie.',avantage:'0% d\'intérêt + déclencheur bancaire x5',diff:'Facile'},{nom:'📈 Earn-out — Prix variable',principe:'Le prix de rachat est partiellement conditionné aux performances futures. Tu paies un prix de base faible maintenant et un complément seulement si l\'entreprise performe.',capital:'Variable',exemple:'Prix fixe 150K€ + earn-out 80K€ si CA dépasse 500K€ pendant 3 ans. Tu réduis risque et prix d\'entrée.',avantage:'Prix réduit à l\'entrée',diff:'Moyen'}];
-var sel=[],selPrices=[],selCountries=['france','portugal','maroc'],countdown=300,countdownInterval=null;
+var COUNTRIES=[{id:'france',l:'France'},{id:'portugal',l:'Portugal'},{id:'maroc',l:'Maroc'},{id:'espagne',l:'Espagne'},{id:'belgique',l:'Belgique'},{id:'suisse',l:'Suisse'},{id:'canada',l:'Canada'},{id:'usa',l:'USA'},{id:'allemagne',l:'Allemagne'},{id:'italie',l:'Italie'},{id:'uk',l:'Royaume-Uni'},{id:'dubai',l:'Dubai / UAE'},{id:'senegal',l:'Senegal'},{id:'ci',l:'Cote Ivoire'},{id:'tunisie',l:'Tunisie'},{id:'algerie',l:'Algerie'},{id:'cameroun',l:'Cameroun'},{id:'mauritanie',l:'Mauritanie'}];
+var PLATFORMS={business:[{c:'france',n:'Transentreprise',d:'CCI France 6000+ annonces',url:'https://www.transentreprise.com/offres'},{c:'france',n:'CessionPME',d:'118000+ annonces PME',url:'https://www.cessionpme.com/vente-entreprise'},{c:'france',n:'Bpifrance Reprise',d:'Annonces officielles Bpifrance',url:'https://reprise-entreprise.bpifrance.fr'},{c:'france',n:'CessionBTP',d:'Specialiste BTP 500+ annonces',url:'https://www.cessionbtp.fr/annonces'},{c:'france',n:'Transmibat FFB',d:'Federation Francaise Batiment',url:'https://www.transmibat.fr/annonces'},{c:'france',n:'Fusacq',d:'PME avec bilans financiers',url:'https://www.fusacq.com/annonces'},{c:'france',n:'Alvo Market',d:'Valorisation + annonces + financement',url:'https://www.alvo.market/annonces'},{c:'france',n:'BODACC liquidations',d:'Liquidations judiciaires 1 euro',url:'https://www.bodacc.fr/annonce/liste/page-1'},{c:'portugal',n:'Negocios a Venda',d:'N1 Portugal toutes activites',url:'https://www.negociosavenda.pt/negocios'},{c:'portugal',n:'OLX Porto',d:'Fonds commerce ville de Porto',url:'https://www.olx.pt/negocios-e-servicos/comercios-e-negocios/porto'},{c:'portugal',n:'OLX Braga',d:'Fonds commerce region Braga',url:'https://www.olx.pt/negocios-e-servicos/comercios-e-negocios/braga'},{c:'portugal',n:'Custojusto',d:'Petites annonces entreprises Portugal',url:'https://www.custojusto.pt/negocios'},{c:'maroc',n:'Avito Maroc',d:'N1 Maroc fonds de commerce',url:'https://www.avito.ma/fr/maroc/commerces_et_fonds_de_commerce'},{c:'maroc',n:'Mubawab',d:'Locaux commerciaux Maroc',url:'https://www.mubawab.ma/fr/sc/locaux-commerciaux:p:1'},{c:'maroc',n:'Sarouty',d:'Immobilier commercial Maroc',url:'https://www.sarouty.ma/fr/recherche?transaction_type=acheter&property_type=commercial'},{c:'maroc',n:'MarocAnnonces',d:'Fonds commerce petits prix',url:'https://www.marocannonces.com/maroc/offres-vente/immobilier/fonds-de-commerce'},{c:'espagne',n:'Infonegocios',d:'N1 cession entreprises Espagne',url:'https://www.infonegocios.es/negocios-en-venta'},{c:'espagne',n:'Milanuncios',d:'Petites annonces entreprises Espagne',url:'https://www.milanuncios.com/empresas-negocios'},{c:'belgique',n:'BizBuySell Belgique',d:'Entreprises a vendre Belgique',url:'https://www.bizbuysell.com/businesses-for-sale/belgium'},{c:'canada',n:'BizBuySell Canada',d:'Marche entreprises Canada',url:'https://www.bizbuysell.com/businesses-for-sale/canada'},{c:'canada',n:'Kijiji Entreprises',d:'Annonces locales Canada',url:'https://www.kijiji.ca/b-entreprise-affaire-a-vendre/canada'},{c:'usa',n:'BizBuySell USA',d:'N1 USA 65000+ entreprises',url:'https://www.bizbuysell.com'},{c:'usa',n:'BusinessesForSale',d:'Marche international USA',url:'https://www.businessesforsale.com'},{c:'dubai',n:'Dubizzle Business',d:'Entreprises Dubai et UAE',url:'https://www.dubizzle.com/business-for-sale'},{c:'senegal',n:'Expat-Dakar',d:'Entreprises Dakar Senegal',url:'https://www.expat-dakar.com/business-industries'},{c:'senegal',n:'SeneDeal',d:'Commerce et fonds Senegal',url:'https://www.senedeal.com/business'},{c:'tunisie',n:'Tayara',d:'N1 Tunisie toutes annonces',url:'https://www.tayara.tn/ads/c/Business_Commerce'},{c:'algerie',n:'Ouedkniss',d:'N1 Algerie commerces',url:'https://www.ouedkniss.com/commerce'}],car:[{c:'france',n:'LeBonCoin Autos',d:'N1 France millions annonces voitures',url:'https://www.leboncoin.fr/voitures/offres'},{c:'france',n:'La Centrale',d:'Garages et particuliers France',url:'https://www.lacentrale.fr'},{c:'france',n:'AutoScout24 FR',d:'Marche europeen France',url:'https://www.autoscout24.fr/lst'},{c:'portugal',n:'OLX Carros',d:'N1 voitures occasion Portugal',url:'https://www.olx.pt/carros-motos-e-barcos/carros'},{c:'portugal',n:'StandVirtual',d:'Concessionnaires Portugal',url:'https://www.standvirtual.com/carros'},{c:'maroc',n:'Avito Voitures',d:'N1 voitures occasion Maroc',url:'https://www.avito.ma/fr/maroc/voitures'},{c:'maroc',n:'Moteur.ma',d:'Specialiste auto Maroc',url:'https://www.moteur.ma/voiture/voiture-occasion'},{c:'espagne',n:'Coches.net',d:'N1 voitures occasion Espagne',url:'https://www.coches.net/coches-ocasion'},{c:'espagne',n:'AutoScout24 ES',d:'Marche europeen Espagne',url:'https://www.autoscout24.es/lst'},{c:'belgique',n:'2ememain Voitures',d:'N1 voitures occasion Belgique',url:'https://www.2ememain.be/q/voitures'},{c:'belgique',n:'AutoScout24 BE',d:'Marche belge voitures',url:'https://www.autoscout24.be/fr/lst'},{c:'canada',n:'AutoTrader Canada',d:'N1 voitures Canada',url:'https://www.autotrader.ca'},{c:'usa',n:'CarGurus',d:'N1 voitures USA',url:'https://www.cargurus.com'},{c:'usa',n:'AutoTrader USA',d:'Marche automobile USA',url:'https://www.autotrader.com'},{c:'dubai',n:'Dubizzle Cars',d:'N1 voitures Dubai',url:'https://www.dubizzle.com/cars'},{c:'senegal',n:'Expat-Dakar Autos',d:'Voitures occasion Senegal',url:'https://www.expat-dakar.com/voitures'},{c:'tunisie',n:'Tayara Autos',d:'N1 voitures Tunisie',url:'https://www.tayara.tn/ads/c/Vehicules'},{c:'algerie',n:'Ouedkniss Autos',d:'N1 voitures Algerie',url:'https://www.ouedkniss.com/automobile/voiture'}],immo:[{c:'france',n:'SeLoger',d:'N1 immobilier France',url:'https://www.seloger.com/achat'},{c:'france',n:'LeBonCoin Immo',d:'Particuliers et agences France',url:'https://www.leboncoin.fr/immobilier/offres'},{c:'france',n:'PAP.fr',d:'Particulier a particulier sans agence',url:'https://www.pap.fr/annonce/achat-appartement-maison'},{c:'france',n:'BienIci',d:'Toutes annonces regroupees',url:'https://www.bienici.com/achat'},{c:'portugal',n:'Idealista PT',d:'N1 immobilier Portugal Porto Braga',url:'https://www.idealista.pt/comprar-imoveis'},{c:'portugal',n:'Imovirtual',d:'Appartements et maisons Portugal',url:'https://www.imovirtual.com/comprar'},{c:'portugal',n:'OLX Imoveis',d:'Petites annonces immobilier Portugal',url:'https://www.olx.pt/imoveis/apartamentos'},{c:'maroc',n:'Mubawab Maroc',d:'N1 immobilier Maroc toutes villes',url:'https://www.mubawab.ma/fr/st/appartements-a-vendre'},{c:'maroc',n:'Sarouty',d:'Appartements et maisons Maroc',url:'https://www.sarouty.ma/fr/recherche?transaction_type=acheter'},{c:'maroc',n:'Avito Immo',d:'Petites annonces immobilier Maroc',url:'https://www.avito.ma/fr/maroc/immobilier'},{c:'espagne',n:'Idealista ES',d:'N1 immobilier Espagne',url:'https://www.idealista.com/venta-viviendas'},{c:'espagne',n:'Fotocasa',d:'Appartements et maisons Espagne',url:'https://www.fotocasa.es/es/comprar/casas-pisos/espana/todos'},{c:'belgique',n:'Immovlan',d:'N1 immobilier Belgique',url:'https://www.immovlan.be/fr/residentieel/te-koop'},{c:'suisse',n:'Homegate',d:'N1 immobilier Suisse',url:'https://www.homegate.ch/buy'},{c:'canada',n:'Realtor.ca',d:'N1 immobilier Canada',url:'https://www.realtor.ca'},{c:'usa',n:'Zillow',d:'N1 immobilier USA',url:'https://www.zillow.com/homes/for_sale'},{c:'usa',n:'Realtor.com',d:'Annonces immobilier USA',url:'https://www.realtor.com/realestateandhomes-search'},{c:'dubai',n:'Bayut Dubai',d:'N1 immobilier Dubai UAE',url:'https://www.bayut.com/to-buy/property/dubai'},{c:'dubai',n:'Property Finder',d:'Appartements Dubai UAE',url:'https://www.propertyfinder.ae/en/buy/properties'},{c:'senegal',n:'Expat-Dakar Immo',d:'Immobilier Dakar Senegal',url:'https://www.expat-dakar.com/immobilier'},{c:'tunisie',n:'Tayara Immo',d:'N1 immobilier Tunisie',url:'https://www.tayara.tn/ads/c/Immobilier'},{c:'algerie',n:'Ouedkniss Immo',d:'N1 immobilier Algerie',url:'https://www.ouedkniss.com/immobilier'}]};
+var BUDGETS={business:[{l:'1 euro a 10K',min:'1',max:'10000'},{l:'10K a 50K',min:'10000',max:'50000'},{l:'50K a 200K',min:'50000',max:'200000'},{l:'200K a 1M',min:'200000',max:'1000000'},{l:'1M a 5M',min:'1000000',max:'5000000'},{l:'Plus de 5M',min:'5000000',max:'illimite'}],car:[{l:'Moins de 3000',min:'500',max:'3000'},{l:'3K a 8K',min:'3000',max:'8000'},{l:'8K a 20K',min:'8000',max:'20000'},{l:'20K a 50K',min:'20000',max:'50000'},{l:'50K a 100K',min:'50000',max:'100000'},{l:'Plus de 100K luxe',min:'100000',max:'illimite'}],immo:[{l:'Moins de 50K',min:'10000',max:'50000'},{l:'50K a 150K',min:'50000',max:'150000'},{l:'150K a 400K',min:'150000',max:'400000'},{l:'400K a 800K',min:'400000',max:'800000'},{l:'800K a 2M',min:'800000',max:'2000000'},{l:'Plus de 2M prestige',min:'2000000',max:'illimite'}]};
+var FILTERS={business:{title:'Secteur',items:['Batiment BTP','Import Export','Industrie','Transport','Commerce','Services B2B','Restauration','Agriculture','Numerique','Sante','Tous secteurs']},car:{title:'Type vehicule',items:['Berline','SUV 4x4','Monospace','Citadine','Electrique','Hybride','Utilitaire','Sport Luxe','Moto','Tous types']},immo:{title:'Type bien',items:['Appartement','Maison Villa','Terrain','Local commercial','Residence vacances','Propriete rurale','Immeuble','Tous types']}};
+var FIN=[{n:'Credit-vendeur entreprises',p:'Le vendeur vous finance directement. Vous versez 10-20% comptant, le reste sur 3 a 7 ans grace aux benefices.',c:'10 a 20%',e:'Entreprise 300K : 30K comptant puis 270K rembourse en 5 ans = 54K par an via benefices.',a:'0 banque 0 garantie personnelle',d:'Facile'},{n:'LBO via Holding',p:'Creez une holding qui emprunte. La cible rembourse la dette via ses dividendes. 30K peut controler 600K.',c:'5 a 30%',e:'Cible 600K : Holding 30K, Emprunt 500K, Dividendes 150K par an, Remboursement 71K par an, Benefice net 79K par an.',a:'Levier x20 sur votre capital',d:'Avance'},{n:'Bpifrance + Pret honneur',p:'Bpifrance garantit 70% de votre pret. Initiative France accorde 40K a 0% sans garantie.',c:'15K a 40K',e:'40K a 0% + Banque 160K garanti BPI = 200K avec 0 caution personnelle.',a:'0 caution sur vos biens',d:'Moyen'},{n:'Location-gerance puis achat',p:'Gerez avant d achat. Loyers deduits du prix. Test 12-24 mois sans risque.',c:'0 euro apport',e:'Entreprise 200K : Loyer 2000 x 18 mois = 36K deduits. Prix reel 164K apres test.',a:'Test sans risque + deduction prix',d:'Facile'},{n:'Reprise judiciaire a 1 euro',p:'Entreprises en liquidation reprises pour 1 euro via tribunal de commerce. Dettes restent a ancienne structure.',c:'1 euro + frais',e:'PME BTP CA 700K en liquidation. Offre 1 euro. Tribunal valide. Reprise actifs contrats salaries. Dettes : zero.',a:'Reprise quasi-gratuite vraie PME',d:'Avance'},{n:'Credit immobilier classique',p:'Emprunt bancaire 15-25 ans. 10% apport + frais notaire. Taux France : 3.5 a 4.2%.',c:'10% + frais notaire',e:'Appartement 200K : Apport 20K + frais 16K = 36K. Emprunt 180K sur 20 ans = 1050 par mois.',a:'Proprietaire immediat',d:'Facile'},{n:'Credit auto LOA',p:'LOA leasing ou credit auto. LOA : petites mensualites pas proprietaire. Credit : proprietaire apres remboursement.',c:'0 a 20%',e:'Voiture 15K : LOA 36 mois 350 par mois sans apport. OU credit 3K apport + 250 par mois 5 ans.',a:'Rouler sans sortir tout le capital',d:'Facile'}];
+var selCountries=['france','portugal','maroc'],selBudgets=[],selFilters=[],currentCat='business',linksFilter='business';
 window.onload=function(){
-var sg=document.getElementById('sg');
-SECTORS.forEach(function(s){var b=document.createElement('button');b.className='sector-btn';b.textContent=s.l;b.dataset.id=s.id;b.onclick=function(){b.classList.toggle('on');sel=Array.from(document.querySelectorAll('.sector-btn.on')).map(function(x){return x.dataset.id})};sg.appendChild(b)});
-var pg=document.getElementById('pg');
-PRICES.forEach(function(p){var b=document.createElement('button');b.className='price-btn';b.textContent=p.l;b.dataset.id=p.id;b.onclick=function(){b.classList.toggle('on');selPrices=Array.from(document.querySelectorAll('.price-btn.on')).map(function(x){return x.dataset.id})};pg.appendChild(b)});
-document.querySelectorAll('.flag').forEach(function(f){f.onclick=function(){f.classList.toggle('on');selCountries=Array.from(document.querySelectorAll('.flag.on')).map(function(x){return x.dataset.c})}});
-document.getElementById('auto-toggle').onchange=function(){if(this.checked){startAuto()}else{stopAuto()}};
-renderFin(FIN);renderSites();
+var cg=document.getElementById('cg');
+COUNTRIES.forEach(function(c){var b=document.createElement('button');b.className='cflag'+(selCountries.includes(c.id)?' on':'');b.textContent=c.l;b.dataset.id=c.id;b.onclick=function(){b.classList.toggle('on');selCountries=Array.from(document.querySelectorAll('.cflag.on')).map(function(x){return x.dataset.id});renderLinks()};cg.appendChild(b)});
+renderDynamicFilters();renderBudgets();renderFin();renderLinks();
 };
-function showPanel(id,t){document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});document.querySelectorAll('.nav-btn').forEach(function(x){x.classList.remove('active')});document.getElementById('panel-'+id).classList.add('active');if(t)t.classList.add('active')}
-function startAuto(){document.getElementById('auto-timer').style.display='block';countdown=300;updateCountdown();countdownInterval=setInterval(function(){countdown--;updateCountdown();if(countdown<=0){run();countdown=300}},1000)}
-function stopAuto(){clearInterval(countdownInterval);document.getElementById('auto-timer').style.display='none'}
-function updateCountdown(){var m=Math.floor(countdown/60),s=countdown%60;document.getElementById('countdown').textContent=m+':'+(s<10?'0':'')+s}
+function selectCat(cat,el){currentCat=cat;document.querySelectorAll('.cat-tab').forEach(function(t){t.classList.remove('on','biz','car','immo')});el.classList.add('on',cat==='business'?'biz':cat==='car'?'car':'immo');selFilters=[];selBudgets=[];renderDynamicFilters();renderBudgets()}
+function renderDynamicFilters(){var f=FILTERS[currentCat];var h='<div style="margin-bottom:14px"><div style="font-size:11px;font-weight:700;color:#e2e8f0;margin-bottom:8px">2 — '+f.title+'</div><div class="filter-grid" id="ff">';f.items.forEach(function(item,i){h+='<button class="fbtn" data-idx="'+i+'" onclick="toggleFilter(this)">'+item+'</button>'});h+='</div></div>';document.getElementById('dynamic-filters').innerHTML=h}
+function toggleFilter(btn){btn.classList.toggle('on');selFilters=Array.from(document.querySelectorAll('#ff .fbtn.on')).map(function(x){return x.textContent})}
+function renderBudgets(){var pg=document.getElementById('pg');var budgets=BUDGETS[currentCat];pg.innerHTML='';budgets.forEach(function(b,i){var btn=document.createElement('button');btn.className='fbtn';btn.textContent=b.l;btn.dataset.idx=i;btn.onclick=function(){btn.classList.toggle('on');selBudgets=Array.from(document.querySelectorAll('#pg .fbtn.on')).map(function(x){return parseInt(x.dataset.idx)})};pg.appendChild(btn)});var titles={business:'3 — Budget de reprise',car:'3 — Budget voiture',immo:'3 — Budget immobilier'};document.getElementById('budget-title').textContent=titles[currentCat]}
+function setLinksFilter(cat,el){linksFilter=cat;document.querySelectorAll('#panel-links .cat-tab').forEach(function(t){t.classList.remove('on','biz','car','immo')});el.classList.add('on',cat==='business'?'biz':cat==='car'?'car':'immo');renderLinks()}
+function renderLinks(){var c=document.getElementById('links-content');if(!c)return;var platforms=PLATFORMS[linksFilter]||PLATFORMS.business;var countries=selCountries.length?selCountries:COUNTRIES.map(function(c){return c.id});var byCountry={};platforms.forEach(function(p){if(!byCountry[p.c])byCountry[p.c]=[];byCountry[p.c].push(p)});var h='';COUNTRIES.forEach(function(co){if(!countries.includes(co.id))return;if(!byCountry[co.id]||!byCountry[co.id].length)return;h+='<div class="country-section"><div class="country-title">'+co.l+'</div><div class="plat-grid">';byCountry[co.id].forEach(function(p){h+='<div class="plat-card"><div class="plat-name">'+p.n+'</div><div class="plat-desc">'+p.d+'</div><a href="'+p.url+'" target="_blank" class="plat-a">Voir les annonces</a></div>'});h+='</div></div>'});if(!h)h='<div class="empty"><p>Selectionne des pays pour voir les plateformes</p></div>';c.innerHTML=h}
 async function run(){
 var k=document.getElementById('key').value.trim();
-if(!k){serr('🔑 Entre ta clé API Groq gratuite — Va sur console.groq.com → API Keys → Create API Key');return}
-if(!sel.length&&!selPrices.length){serr('Sélectionne au moins un secteur ou une fourchette de prix');return}
-if(!selCountries.length){serr('Sélectionne au moins un pays');return}
+if(!k){serr('Entre ta cle Groq gratuite sur console.groq.com');return}
+if(!selCountries.length){serr('Selectionne au moins un pays');return}
 herr();setL(true);
-var sc=sel.length?SECTORS.filter(function(s){return sel.includes(s.id)}).map(function(s){return s.l}).join(', '):'Tous secteurs';
-var pr=selPrices.length?PRICES.filter(function(p){return selPrices.includes(p.id)}).map(function(p){return p.min+' a '+p.max}).join(' ou '):'Tous budgets';
-var pays=selCountries.map(function(c){return c==='france'?'France':c==='portugal'?'Portugal (Braga et Porto)':'Maroc'}).join(', ');
-var steps=['Connexion aux bases de données...','Analyse des marches de cession...','Calcul des valorisations...','Identification des prix reduits...','Generation des liens...','Compilation finale...'];
+var pays=selCountries.map(function(id){return COUNTRIES.find(function(c){return c.id===id})}).filter(Boolean).map(function(c){return c.l}).join(', ');
+var filters=selFilters.length?selFilters.join(', '):'Toutes categories';
+var budgets=selBudgets.length?BUDGETS[currentCat].filter(function(b,i){return selBudgets.includes(i)}).map(function(b){return b.min+' a '+b.max}).join(' ou '):'Tous budgets';
+var steps=['Analyse des marches...','Calcul des prix...','Selection opportunites...','Conseils personnalises...','Finalisation...'];
 var si=0,iv=setInterval(function(){if(si<steps.length-1){si++;document.getElementById('lstep').textContent=steps[si]}},900);
-var prompt='Tu es un expert senior en reprise entreprise France, Portugal, Maroc. SECTEURS:'+sc+' BUDGET:'+pr+' PAYS:'+pays+'. Donne des opportunites REELLES et DETAILLEES avec vrais prix marche 2024-2025. Inclure reprises a 1 euro, liquidations judiciaires, entreprises en difficulte. Reponds UNIQUEMENT en JSON:\n{"opportunites":[{"pays":"France","region":"Normandie","secteur":"BTP","emoji":"emoji","type_entreprise":"description precise detaillee","ca_moyen":"CA annuel","marge_nette":"% marge","valorisation":"EBE x multiple exact","prix_rachat_mini":"prix minimal ex 5000 euros","prix_rachat_moyen":"prix moyen marche","budget_avec_financement":"apport reel avec credit vendeur","raisons_vente":["raison1","raison2"],"atouts":["atout1","atout2","atout3"],"risques":["risque1","risque2"],"comment_trouver":"comment trouver ce type entreprise concretement","conseil_regional":"conseil specifique region pays","sites":[{"nom":"nom site","url":"https://url-exacte.com","description":"ce quon y trouve"}],"score":88,"urgence":"HAUTE"}],"alerte":"meilleure opportunite du moment","demarches":[{"action":"action concrete","lien":"https://lien.com","pourquoi":"explication"}],"conseil_general":"conseil personnalise"}';
+var catPrompts={business:'Expert reprise entreprise. RACHAT ENTREPRISE pour PAYS='+pays+' SECTEURS='+filters+' BUDGET='+budgets+'. Inclure liquidations 1 euro reprises symboliques ET entreprises saines. Vrais prix marche 2024-2025.',car:'Expert automobile. ACHAT VOITURE OCCASION pour PAYS='+pays+' TYPE='+filters+' BUDGET='+budgets+'. Conseils pratiques pieges eviter meilleures periodes villes pour acheter.',immo:'Expert immobilier international. ACHAT IMMOBILIER pour PAYS='+pays+' TYPE='+filters+' BUDGET='+budgets+'. Quartiers villes interessants prix m2 tendances 2025 pieges eviter.'};
+var prompt=catPrompts[currentCat]+'\n\nJSON UNIQUEMENT sans markdown:\n{"opportunites":[{"pays":"France","region":"Normandie","secteur":"BTP","emoji":"emoji","type_entreprise":"description claire 2-3 phrases pour debutant","ca_moyen":"valeur annuelle","marge_nette":"pourcentage","valorisation":"methode et multiple","prix_rachat_mini":"prix minimal realiste","prix_rachat_moyen":"prix moyen marche","budget_avec_financement":"apport reel avec financement","raisons_vente":["raison1","raison2"],"atouts":["atout1","atout2","atout3"],"risques":["risque1","risque2"],"comment_trouver":"3-4 phrases pratiques comment trouver","conseil_regional":"conseil actionnable pour cette zone","score":85,"urgence":"HAUTE ou NORMALE"}],"alerte":"meilleure opportunite du moment","demarches":[{"action":"action concrete","lien":"https://url.com","pourquoi":"explication"}],"conseil_general":"conseil global 3-4 phrases"}';
 try{
-var r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+k},body:JSON.stringify({model:'llama-3.3-70b-versatile',messages:[{role:'user',content:prompt}],temperature:0.6,max_tokens:4000})});
+var r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+k},body:JSON.stringify({model:'llama-3.3-70b-versatile',messages:[{role:'user',content:prompt}],temperature:0.65,max_tokens:4000})});
 clearInterval(iv);
 var d=await r.json();
 if(!r.ok)throw new Error(d.error&&d.error.message?d.error.message:'Erreur '+r.status);
 var tx=d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content:'';
 tx=tx.replace(/```json|```/g,'').trim();
-var p=JSON.parse(tx);
-renderResults(p);
-if(p.strategies_financement)renderFin(p.strategies_financement);
+var parsed=JSON.parse(tx);
+renderResults(parsed,currentCat);
 document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('active')});
 document.querySelectorAll('.nav-btn').forEach(function(x){x.classList.remove('active')});
 document.getElementById('panel-results').classList.add('active');
@@ -236,56 +232,37 @@ document.querySelectorAll('.nav-btn')[1].classList.add('active');
 }catch(e){clearInterval(iv);serr('Erreur: '+e.message)}
 finally{setL(false)}
 }
-function renderResults(data){
-var c=document.getElementById('results-wrap'),h='';
-if(data.alerte)h+='<div class="alert-banner"><div class="alert-tag">ALERTE OPPORTUNITE</div><div class="alert-text">'+data.alerte+'</div></div>';
-h+='<div class="results-header"><div class="results-count"><span>'+data.opportunites.length+'</span> opportunites identifiees</div><button class="refresh-btn" onclick="run()">Actualiser</button></div>';
+function renderResults(data,cat){
+var c=document.getElementById('rw'),h='';
+if(data.alerte)h+='<div class="alert"><div class="alert-tag">ALERTE OPPORTUNITE</div><div class="alert-txt">'+data.alerte+'</div></div>';
+h+='<div class="r-header"><div class="r-count"><b>'+data.opportunites.length+'</b> opportunites identifiees</div><button class="r-refresh" onclick="run()">Actualiser</button></div>';
 data.opportunites.forEach(function(o){
-var score=o.score||75,cl=score>=80?'score-a':score>=65?'score-b':'score-c',col=score>=80?'#10b981':score>=65?'#f59e0b':'#ef4444';
-var flag=o.pays==='France'?'🇫🇷':o.pays&&o.pays.includes('Portugal')?'🇵🇹':o.pays&&o.pays.includes('Maroc')?'🇲🇦':'🌍';
-h+='<div class="opp-card '+cl+'">';
-h+='<div class="opp-top"><div><div class="opp-emoji">'+o.emoji+'</div><div class="opp-title">'+o.type_entreprise+'</div><div class="opp-sub">'+o.secteur+'</div><div class="opp-country">'+flag+' '+(o.pays||'')+(o.region?' · '+o.region:'')+'</div>';
-if(o.urgence==='HAUTE')h+='<div style="display:inline-block;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:2px 8px;font-size:10px;color:#fca5a5;margin-top:6px;font-weight:700">OPPORTUNITE URGENTE</div>';
-h+='</div><div class="score-pill"><div class="score-num" style="color:'+col+'">'+score+'</div><div class="score-label">score /100</div><div class="score-bar"><div class="score-fill" style="width:'+score+'%;background:'+col+'"></div></div></div></div>';
-if(o.prix_rachat_mini||o.prix_rachat_moyen){
-h+='<div class="price-highlight">';
-if(o.prix_rachat_mini)h+='<div><div class="price-label">PRIX MINIMAL</div><div class="price-val">'+o.prix_rachat_mini+'</div></div>';
-if(o.prix_rachat_moyen)h+='<div><div class="price-label">PRIX MOYEN MARCHE</div><div class="price-val green">'+o.prix_rachat_moyen+'</div></div>';
-h+='</div>';
-}
-if(o.budget_avec_financement)h+='<div style="font-size:12px;color:#6ee7b7;margin-bottom:12px">Avec financement intelligent : <strong>'+o.budget_avec_financement+'</strong> reellement necessaires</div>';
-h+='<div class="stats-row"><div class="stat-box"><div class="stat-label">CA ANNUEL</div><div class="stat-val">'+o.ca_moyen+'</div></div><div class="stat-box"><div class="stat-label">MARGE NETTE</div><div class="stat-val">'+o.marge_nette+'</div></div><div class="stat-box"><div class="stat-label">VALORISATION</div><div class="stat-val" style="font-size:11px;color:#a78bfa">'+o.valorisation+'</div></div></div>';
-if(o.conseil_regional)h+='<div class="conseil-box"><strong>CONSEIL EXPERT '+((o.region||o.pays||'').toUpperCase())+'</strong>'+o.conseil_regional+'</div>';
-if(o.comment_trouver)h+='<div class="conseil-box" style="background:rgba(139,92,246,0.06);border-color:rgba(139,92,246,0.2);color:#c4b5fd"><strong style="color:#a78bfa">COMMENT TROUVER</strong>'+o.comment_trouver+'</div>';
-if(o.raisons_vente&&o.raisons_vente.length){h+='<div class="tags-section"><div class="tags-title" style="color:#60a5fa">RAISONS DE VENTE</div><div class="tags">';o.raisons_vente.forEach(function(r){h+='<span class="tag" style="background:rgba(96,165,250,0.08);border-color:rgba(96,165,250,0.2);color:#93c5fd">'+r+'</span>'});h+='</div></div>'}
-if(o.atouts&&o.atouts.length){h+='<div class="tags-section"><div class="tags-title green">ATOUTS</div><div class="tags">';o.atouts.forEach(function(a){h+='<span class="tag tag-green">'+a+'</span>'});h+='</div></div>'}
-if(o.risques&&o.risques.length){h+='<div class="tags-section"><div class="tags-title orange">VIGILANCE</div><div class="tags">';o.risques.forEach(function(r){h+='<span class="tag tag-orange">'+r+'</span>'});h+='</div></div>'}
-if(o.sites&&o.sites.length){h+='<div class="links-section"><div class="links-title">OU TROUVER DES ANNONCES</div><div class="links-grid">';o.sites.forEach(function(s){var url=typeof s==='object'?s.url:'#',nom=typeof s==='object'?s.nom:s;h+='<a href="'+url+'" target="_blank" class="link-btn">'+nom+'</a>'});h+='</div></div>'}
+var score=o.score||75,cl=score>=80?'A':score>=65?'B':'C',col=score>=80?'#10b981':score>=65?'#f59e0b':'#ef4444';
+var cid=selCountries[0]||'france';
+if(o.pays){var pl=o.pays.toLowerCase();COUNTRIES.forEach(function(co){if(pl.includes(co.l.toLowerCase().split(' ')[0]))cid=co.id})}
+var plist=(PLATFORMS[cat]||[]).filter(function(p){return p.c===cid}).slice(0,4);
+h+='<div class="card '+cl+'">';
+h+='<div class="card-top"><div><div class="card-emoji">'+o.emoji+'</div><div class="card-title">'+o.type_entreprise+'</div><div class="card-sub">'+o.secteur+'</div><div class="card-loc">'+(o.pays||'')+(o.region?' - '+o.region:'')+'</div>';
+if(o.urgence==='HAUTE')h+='<div style="display:inline-block;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:5px;padding:2px 8px;font-size:10px;color:#fca5a5;margin-top:5px;font-weight:700">URGENT</div>';
+h+='</div><div class="score-box"><div class="score-n" style="color:'+col+'">'+score+'</div><div class="score-l">score /100</div><div class="score-bar"><div class="score-fill" style="width:'+score+'%;background:'+col+'"></div></div></div></div>';
+if(o.prix_rachat_mini||o.prix_rachat_moyen){h+='<div class="pbox">';if(o.prix_rachat_mini)h+='<div><div class="pl">PRIX MINIMAL</div><div class="pv">'+o.prix_rachat_mini+'</div></div>';if(o.prix_rachat_moyen)h+='<div><div class="pl">PRIX MOYEN MARCHE</div><div class="pv g">'+o.prix_rachat_moyen+'</div></div>';h+='</div>'}
+if(o.budget_avec_financement)h+='<div class="budget-line">Avec financement : <b>'+o.budget_avec_financement+'</b> a debourser reellement</div>';
+if(o.ca_moyen||o.marge_nette||o.valorisation){h+='<div class="stats">';if(o.ca_moyen)h+='<div class="stat"><div class="sl">CA / VALEUR</div><div class="sv">'+o.ca_moyen+'</div></div>';if(o.marge_nette)h+='<div class="stat"><div class="sl">MARGE</div><div class="sv">'+o.marge_nette+'</div></div>';if(o.valorisation)h+='<div class="stat"><div class="sl">VALORISATION</div><div class="sv" style="font-size:10px;color:#a78bfa">'+o.valorisation+'</div></div>';h+='</div>'}
+if(o.conseil_regional)h+='<div class="info-box info-blue"><b class="info-b">CONSEIL EXPERT '+(o.region||o.pays||'').toUpperCase()+'</b>'+o.conseil_regional+'</div>';
+if(o.comment_trouver)h+='<div class="info-box info-purple"><b class="info-b">COMMENT TROUVER</b>'+o.comment_trouver+'</div>';
+if(o.raisons_vente&&o.raisons_vente.length){h+='<div class="tags-wrap"><div class="tags-title" style="color:#60a5fa">RAISONS DE VENTE</div><div class="tags">';o.raisons_vente.forEach(function(r){h+='<span class="tag tb">'+r+'</span>'});h+='</div></div>'}
+if(o.atouts&&o.atouts.length){h+='<div class="tags-wrap"><div class="tags-title" style="color:#10b981">ATOUTS</div><div class="tags">';o.atouts.forEach(function(a){h+='<span class="tag tg">'+a+'</span>'});h+='</div></div>'}
+if(o.risques&&o.risques.length){h+='<div class="tags-wrap"><div class="tags-title" style="color:#f59e0b">VIGILANCE</div><div class="tags">';o.risques.forEach(function(r){h+='<span class="tag to">'+r+'</span>'});h+='</div></div>'}
+if(plist.length){h+='<div class="links-wrap"><div class="links-title">LIENS DIRECTS ANNONCES</div><div class="link-grid">';plist.forEach(function(p){h+='<div><a href="'+p.url+'" target="_blank" class="link-btn">'+p.n+'</a><div class="link-desc">'+p.d+'</div></div>'});h+='</div></div>'}
 h+='</div>';
 });
-if(data.demarches&&data.demarches.length){
-h+='<div class="actions-card"><div class="actions-title">Actions concretes a faire cette semaine</div>';
-data.demarches.forEach(function(d,i){var action=typeof d==='object'?d.action:d,lien=typeof d==='object'&&d.lien?d.lien:null,pourquoi=typeof d==='object'&&d.pourquoi?d.pourquoi:'';h+='<div class="action-item"><div class="action-num">'+(i+1)+'</div><div class="action-text">'+action+(lien?'<br><a href="'+lien+'" target="_blank" class="action-link">'+lien+'</a>':'')+(pourquoi?'<br><span style="color:#475569;font-size:11px">'+pourquoi+'</span>':'')+'</div></div>'});
-h+='</div>';
-}
-if(data.conseil_general)h+='<div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.2);border-radius:12px;padding:16px;margin-top:12px"><div style="color:#38bdf8;font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:6px">CONSEIL GENERAL</div><div style="color:#94a3b8;font-size:13px;line-height:1.7">'+data.conseil_general+'</div></div>';
+if(data.demarches&&data.demarches.length){h+='<div class="actions"><h4>Actions a faire cette semaine</h4>';data.demarches.forEach(function(d,i){var action=typeof d==='object'?d.action:d,lien=typeof d==='object'&&d.lien?d.lien:null,pourquoi=typeof d==='object'&&d.pourquoi?d.pourquoi:'';h+='<div class="action"><div class="anum">'+(i+1)+'</div><div class="atxt">'+action+(lien?'<br><a href="'+lien+'" target="_blank">'+lien+'</a>':'')+(pourquoi?'<br><span style="color:#475569;font-size:10px">'+pourquoi+'</span>':'')+'</div></div>'});h+='</div>'}
+if(data.conseil_general)h+='<div style="background:rgba(14,165,233,.06);border:1px solid rgba(14,165,233,.18);border-radius:10px;padding:13px;margin-top:9px"><div style="color:#38bdf8;font-size:10px;font-weight:700;margin-bottom:4px">CONSEIL GLOBAL</div><div style="color:#94a3b8;font-size:12px;line-height:1.7">'+data.conseil_general+'</div></div>';
 c.innerHTML=h;
 }
-function renderFin(list){
-var c=document.getElementById('fc'),h='';
-list.forEach(function(f){
-var nom=f.nom||f.n,principe=f.principe||f.p,capital=f.capital_requis||f.capital||f.c,exemple=f.exemple_chiffre||f.exemple||f.e,avantage=f.avantage_cle||f.avantage||f.a,diff=f.niveau_difficulte||f.diff||f.d;
-var dc=diff==='Facile'?'diff-easy':diff==='Moyen'?'diff-med':'diff-hard';
-h+='<div class="fin-card"><div class="fin-header"><div class="fin-title">'+nom+'</div><div class="diff-pill '+dc+'">'+diff+'</div></div><div class="fin-desc">'+principe+'</div><div class="fin-example"><div class="fin-ex-label">EXEMPLE CHIFFRE</div><div class="fin-ex-val">'+exemple+'</div></div><div class="fin-meta">Capital : <em>'+(capital||'Variable')+'</em> &nbsp; Avantage : <em>'+(avantage||'')+'</em></div></div>';
-});
-c.innerHTML=h;
-}
-function renderSites(){
-var c=document.getElementById('sites-grid'),h='';
-SITES.forEach(function(s){h+='<div class="site-card"><div style="font-size:18px;margin-bottom:6px">'+s.flag+'</div><div class="site-name">'+s.name+'</div><div class="site-desc">'+s.desc+'</div><div style="font-size:10px;color:var(--muted);margin-bottom:8px">'+s.cat+'</div><a href="'+s.url+'" target="_blank" class="site-link">Acceder aux annonces</a></div>'});
-c.innerHTML=h;
-}
-function setL(v){document.getElementById('ldr').style.display=v?'block':'none';document.getElementById('btn').disabled=v;document.getElementById('btn').textContent=v?'Analyse en cours...':'Lancer la recherche'}
+function renderFin(){var c=document.getElementById('fc'),h='';FIN.forEach(function(f){var dc=f.d==='Facile'?'df':f.d==='Avance'?'da':'dm';h+='<div class="fin-card"><div class="fin-top"><div class="fin-title">'+f.n+'</div><div class="diff '+dc+'">'+f.d+'</div></div><div class="fin-desc">'+f.p+'</div><div class="fin-ex"><div class="fin-ex-l">EXEMPLE CHIFFRE</div><div class="fin-ex-v">'+f.e+'</div></div><div class="fin-meta">Apport : <em>'+f.c+'</em> Avantage : <em>'+f.a+'</em></div></div>'});c.innerHTML=h}
+function goPanel(id,t){document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});document.querySelectorAll('.nav-btn').forEach(function(x){x.classList.remove('active')});document.getElementById('panel-'+id).classList.add('active');if(t)t.classList.add('active')}
+function setL(v){document.getElementById('ldr').style.display=v?'block':'none';document.getElementById('btn').disabled=v;document.getElementById('btn').textContent=v?'Analyse en cours...':'Lancer l analyse IA'}
 function serr(m){var e=document.getElementById('err');e.innerHTML=m;e.style.display='block'}
 function herr(){document.getElementById('err').style.display='none'}
 </script>
