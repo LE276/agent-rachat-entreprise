@@ -1,0 +1,3 @@
+<resources>
+    <string name="service_desc">Lit le prix, les km et les minutes des offres affichées dans l\'application chauffeur (Bolt, Uber) pour calculer si la course est rentable. Ne clique jamais à votre place et n\'envoie aucune donnée.</string>
+</resources>
