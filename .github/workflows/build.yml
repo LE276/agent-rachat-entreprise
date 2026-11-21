@@ -1,7 +1,10 @@
 name: Build APK
 on:
   push:
+    paths-ignore: ['RideCheck.apk']
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +19,10 @@ jobs:
           gradle-version: '8.7'
       - run: gradle :app:assembleRelease --no-daemon
       - run: cp app/build/outputs/apk/release/app-release.apk RideCheck.apk
-      - uses: actions/upload-artifact@v4
-        with:
-          name: RideCheck
-          path: RideCheck.apk
+      - name: Publier l'APK dans la branche
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -f RideCheck.apk
+          git commit -m "APK RideCheck" || exit 0
+          git push
