@@ -71,8 +71,11 @@ public class Calc {
         if (dists.size() >= 2) { d.appKm = dists.get(0); d.crsKm = dists.get(1); d.approcheLue = true; }
         else if (dists.size() == 1) d.crsKm = dists.get(0);
         if (durs.size() >= 2) { d.appMin = durs.get(0); d.crsMin = durs.get(1); }
-        else if (durs.size() == 1) d.crsMin = durs.get(0);
-        if (d.crsMin == 0 && d.crsKm > 0) d.crsMin = (int) Math.round(d.crsKm * 2);
+        else if (durs.size() == 1) {
+            // Uber : "1 min (0.2 km)" puis "Course de 3.4 km" sans durée -> la durée est celle de l'approche
+            if (dists.size() >= 2) d.appMin = durs.get(0); else d.crsMin = durs.get(0);
+        }
+        if (d.crsMin == 0 && d.crsKm > 0) d.crsMin = (int) Math.max(1, Math.round(d.crsKm * 2.4));
         if (d.appMin == 0 && d.appKm > 0) d.appMin = (int) Math.round(d.appKm * 2);
         return d;
     }

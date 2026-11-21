@@ -23,7 +23,7 @@ import java.util.Locale;
 public class MainActivity extends Activity {
 
     private LinearLayout root;
-    private TextView etat, stats, histo, resultatTest;
+    private TextView etat, stats, histo, resultatTest, diag;
     private final EditText[] champs = new EditText[Calc.KEYS.length];
 
     int dp(int v) { return (int) (v * getResources().getDisplayMetrics().density); }
@@ -99,6 +99,9 @@ public class MainActivity extends Activity {
             Calc.Verdict r = Calc.analyser(this, Calc.parse(test.getText().toString()));
             resultatTest.setText(r.ok ? r.titre + "\n" + r.detail : "Offre non lue : prix ou distance introuvable.");
         });
+        section("5. Diagnostic");
+        diag = texte("", 12, Color.LTGRAY);
+        bouton("Actualiser le diagnostic", v -> rafraichir());
         texte("RideCheck lit seulement l'écran des applis chauffeur, ne clique jamais à ta place et n'envoie aucune donnée.", 12, Color.GRAY);
     }
 
@@ -123,6 +126,8 @@ public class MainActivity extends Activity {
               .append(Calc.f2(Double.parseDouble(f[4]))).append(" € net · ")
               .append(Calc.f2(Double.parseDouble(f[5]))).append(" €/h\n");
         }
+        android.content.SharedPreferences sp = getSharedPreferences("ridecheck", MODE_PRIVATE);
+        if (diag != null) diag.setText("Applis vues : " + sp.getString("diag_pkgs", "aucune") + "\n\nDernier texte lu (Bolt/Uber) :\n" + sp.getString("diag_txt", "rien pour l'instant"));
         histo.setText(sb.length() == 0 ? "Aucune offre analysée pour l'instant." : sb.toString());
     }
 

@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityWindowInfo;
+import java.util.List;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.Locale;
@@ -41,14 +43,30 @@ public class BoltReaderService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        if (!estBolt(event.getPackageName())) return;
-        AccessibilityNodeInfo root = getRootInActiveWindow();
-        if (root == null) return;
+        CharSequence evPkg = event.getPackageName();
+        noterPaquet(evPkg);
+        // On lit toutes les fenêtres visibles : l'offre peut être dans une fenêtre qui n'est pas "active"
         StringBuilder sb = new StringBuilder();
-        collect(root, sb, 0);
+        String pkgVtc = null;
+        try {
+            List<AccessibilityWindowInfo> ws = getWindows();
+            if (ws != null) for (AccessibilityWindowInfo w : ws) {
+                AccessibilityNodeInfo r = w.getRoot();
+                if (r == null) continue;
+                if (estBolt(r.getPackageName())) { pkgVtc = String.valueOf(r.getPackageName()); collect(r, sb, 0); }
+            }
+        } catch (Exception ignored) { }
+        if (sb.length() == 0 && estBolt(evPkg)) {
+            AccessibilityNodeInfo root = getRootInActiveWindow();
+            if (root != null) { pkgVtc = String.valueOf(evPkg); collect(root, sb, 0); }
+            if (sb.length() == 0 && event.getSource() != null) collect(event.getSource(), sb, 0);
+            if (sb.length() == 0) for (CharSequence t : event.getText()) sb.append(t).append('\n');
+        }
+        if (sb.length() == 0) return;
         String txt = sb.toString();
-        // Une offre contient un prix et au moins une distance et une durée
-        if (!txt.contains("€") || !txt.toLowerCase(Locale.ROOT).contains("km") || !txt.toLowerCase(Locale.ROOT).contains("min")) return;
+        String low = txt.toLowerCase(Locale.ROOT);
+        diag(pkgVtc, txt);
+        if (!txt.contains("€") || !low.contains("km")) return;
         Calc.Offre o = Calc.parse(txt);
         if (o.prix == null || o.crsKm == 0) return;
         String key = o.prix + "|" + o.appKm + "|" + o.crsKm;
@@ -62,8 +80,29 @@ public class BoltReaderService extends AccessibilityService {
         if (tts != null && !getSharedPreferences("ridecheck", MODE_PRIVATE).getBoolean("voix_off", false)) tts.speak(v.oral, TextToSpeech.QUEUE_FLUSH, null, "rc");
     }
 
+    private long lastDiag = 0;
+    private void diag(String pkg, String txt) {
+        long now = System.currentTimeMillis();
+        if (now - lastDiag < 1500) return;
+        lastDiag = now;
+        String t = txt.length() > 1500 ? txt.substring(0, 1500) : txt;
+        getSharedPreferences("ridecheck", MODE_PRIVATE).edit()
+            .putString("diag_txt", new java.text.SimpleDateFormat("HH:mm:ss", Locale.FRANCE).format(new java.util.Date()) + " · " + pkg + "\n" + t).apply();
+    }
+
+    private void noterPaquet(CharSequence p) {
+        if (p == null) return;
+        android.content.SharedPreferences sp = getSharedPreferences("ridecheck", MODE_PRIVATE);
+        String vus = sp.getString("diag_pkgs", "");
+        String s = p.toString();
+        if (("," + vus + ",").contains("," + s + ",")) return;
+        vus = vus.isEmpty() ? s : vus + "," + s;
+        if (vus.length() > 600) vus = vus.substring(vus.length() - 600);
+        sp.edit().putString("diag_pkgs", vus).apply();
+    }
+
     private void collect(AccessibilityNodeInfo n, StringBuilder sb, int depth) {
-        if (n == null || depth > 40) return;
+        if (n == null || depth > 60) return;
         if (n.getText() != null) sb.append(n.getText()).append('\n');
         else if (n.getContentDescription() != null) sb.append(n.getContentDescription()).append('\n');
         for (int i = 0; i < n.getChildCount(); i++) collect(n.getChild(i), sb, depth + 1);
