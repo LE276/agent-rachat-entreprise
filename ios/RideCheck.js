@@ -299,7 +299,8 @@ async function mettreAJour() {
     const m = code.match(/const VERSION = (\d+)/);
     if (!m) return alerte("Mise à jour", "Fichier de mise à jour introuvable.");
     if (parseInt(m[1]) <= VERSION) return alerte("Mise à jour", `Tu as déjà la dernière version (v${VERSION}).`);
-    fm().writeString(module.filename, code);
+    const fmc = module.filename.includes("Mobile Documents") ? FileManager.iCloud() : FileManager.local();
+    fmc.writeString(module.filename, code);
     await alerte("Mise à jour ✅", `RideCheck passe en v${m[1]}. Relance le script.`);
   } catch (e) { await alerte("Mise à jour impossible", String(e)); }
 }
